@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+/* CUSTOM CSS VARIABLES */
+:root {
+	--primary: #3b0100;
+	--secondary: #EE5050;
+	--white: #ffffff;
+	--black: #000000;
+	--text-color: #202124;
+	--bg-color: #343233;
+	--bg-color-2: #f36523;
+	--placeholder: #9f9d9e;
+}
+
+/* GLOBAL STYLE */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+}
+
+body {
+	background-color: var(--white);
+    color: #343233;
+	font-family: 'Poppins', sans-serif;
+}
+
+.main-content::before, .main-content::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    z-index: -1;
+}
+.main-content::before {
+	top: 0;
+	background: var(--bg-color);
+}
+.main-content::after {
+	bottom: 0;
+	background: var(--bg-color-2);
+}
+.main-content .home-search {
+	height: calc(100vh);
+}
+.search-logo img {
+	max-width: 350px;
+	margin: 0 auto;
+}
+.search-logo {
+    position: relative;
+    top: -75px;
+}
+.map_marker {
+    position: absolute;
+    z-index: 2;
+    color: var(--bg-color-2);
+    font-size: 1.8em;
+    margin-left: 4px;
+    top: 35px;
+    right: 25px;
+}
+.home-search .form-group {
+    margin-top: -3.5rem !important;
+}
+.home-search .form-control {
+    background-color: #f5f5f5;
+    box-shadow: none;
+    border-radius: 2px;
+    height: 50px;
+    border: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+.easy-autocomplete input {
+    border-color: #ccc;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 10%) inset;
+    color: #555;
+    float: none;
+    padding: 6px 12px;
+}
+.home-search h1 {
+	font-size: 20px;
+	font-weight: 300;
+	text-align: center;
+	color: var(--white);
+}
+.footer-links {
+	text-align: center;
+	font-size: 14px;
+	font-weight: 400;
+	position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.footer-links a, .footer-links a:hover {
+    color: #000 !important;
+    margin: 0 10px;
+}
+.footer-links .font-weight, .footer-links .font-weight:hover {
+	font-weight: 700;
+}
+
+/* NAVBAR STYLE */
+.navbar {
+	background-color: var(--primary);
+}
+.navbar .navbar-brand img {
+	max-width: 250px;
+}
+.navbar .pay-logo img {
+	max-width: 60px;
+}
+.navbar-toggler {
+    padding: 0;
+}
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+.toggle {
+  position: absolute;
+  top: 18px;
+  left: 108px;
+  background-color: lightgray;
+  cursor: pointer;
+}
+.toggle span {
+  position: absolute;
+  width: 34px;
+  height: 3px;
+  background-color: #632625;
+  display: block;
+  top: 25px;
+  left: 20px;
+  border-radius: 4px;
+  transition: .3s;
+}
+.toggle span::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #632625;
+  display: block;
+  top: -10px;
+  left: 0;
+  border-radius: 4px;
+  transition-property: top, transform;
+  transition-delay: 0.3s, 0s;
+  transition-duration: 0.3s, 0.3s;
+}
+.toggle span::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #632625;
+  display: block;
+  top: 10px;
+  left: 0;
+  border-radius: 4px;
+  transition-property: top, transform;
+  transition-delay: 0.3s, 0s;
+  transition-duration: 0.3s, 0.3s;
+}
+.toggle.active span::before {
+  top: 0;
+  transform: rotate(45deg);
+  transition-delay: 0s, 0.3s;
+}
+.toggle.active span::after {
+  top: 0;
+  transform: rotate(-45deg);
+  transition-delay: 0s, 0.3s;
+}
+.toggle.active span {
+  background-color: transparent;
+}
+.navbar-nav {
+	border-top: 1px solid #632625;
+}
+.navbar-nav .nav-item .nav-link {
+	color: var(--white);
+	text-transform: uppercase;
+}
+
+/* SLIDER STYLE */
+.weekly-deals h2 {
+	font-size: 22px;
+	font-weight: 700;
+	text-align: center;
+	text-transform: uppercase;
+}
+.owl-carousel .item a {
+	display: block;
+	font-size: 16px;
+	font-weight: 600;
+	background: #f5f5f5;
+	padding: 5px 10px;
+	border: 2px solid #b3b3b3;
+	text-transform: uppercase;
+	text-align: center;
+	color: var(--bg-color-2)
+}
+
+.weekly-deals::before {
+	content: '';
+	position: absolute;
+	bottom: -20px;
+	background-color: var(--black);
+	width: 90%;
+    height: 2px;
+    left: 5%;
+}
+.deals-img img {
+	margin-bottom: 20px;
+	border-radius: 6px;
+}
+
+/* MODAL STYLE */
+.modal-header .btn-close {
+    padding: 0;
+}
+.modal-body {
+    padding: 0;
+}
+.modal-header {
+    padding: 0;
+    border-bottom: 0;
+}
+.btn-close {
+	position: absolute;
+    right: 15px;
+    z-index: 1;
+    top: 15px;
+    opacity: 1;
+}
+/* PAYMENT FORM STYLE*/
+.payment-form h3 {
+	font-size: 22px;
+	font-weight: 600;
+	text-align: center;
+}
+.payment-form p {
+	font-size: 16px;
+	font-weight: 400;
+	text-align: center;
+	margin-top: 10px;
+}
+.payment-form .form-group {
+	margin-bottom: 15px;
+}
+.payment-form .form-group .form-select,
+.payment-form .form-group .form-control {
+	background-color: #fff1ff;
+	border: 1px solid var(--black);
+	border-radius: 0;
+	height: 50px;
+}
+.form-control:focus,
+.form-select:focus {
+    box-shadow: none;
+}
+.payment-form .form-group ::placeholder {
+	font-size: 16px;
+	text-transform: capitalize;
+	font-weight: 400;
+	color: var(--placeholder);
+}
+.pay-btn {
+	display: block;
+	background-color: #011598;
+	color: var(--white);
+	font-size: 22px;
+	font-weight: 600;
+	width: 300px;
+    height: 70px;
+    line-height: 70px;
+	border-radius: 10px;
+	text-transform: uppercase;
+	text-align: center;
+	margin: auto;
+}
+.pay-btn:hover {
+	color: var(--white);
+}
+.payment-method img {
+	margin-left: 20px;
+}
+.payment-method img:first-child {
+	margin-left: 0;
+}
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+	.toggle {
+    	left: 18px;
+	}
+}
+
+@media (max-width: 576px) {
+  .easy-autocomplete {
+    width: 320px !important;
+  }
+
+  .toggle {
+    left: -7px;
+    top: 4px;
+  }
+
+  .navbar .navbar-brand img {
+    max-width: 150px;
+  }
+
+  .navbar .pay-logo img {
+    max-width: 40px;
+  }
+
+  .payment-method img {
+    max-width: 100px;
+  }
+}
