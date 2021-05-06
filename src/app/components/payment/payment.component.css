@@ -1,0 +1,7 @@
+#card-element {
+    background-color: #fff1ff;
+    border: 1px solid var(--black);
+    border-radius: 0;
+    height: 50px;
+    padding: 13px 8px;
+}

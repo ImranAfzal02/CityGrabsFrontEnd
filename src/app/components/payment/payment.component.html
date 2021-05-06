@@ -1,0 +1,61 @@
+<app-header></app-header>
+<!-- PAYMENT FORM -->
+<section class="payment-form mt-5">
+    <div class="container">
+        <h3>Payment Center</h3>
+        <p>Select the City and Category duration time for ad listing</p>
+        <form #f="ngForm" (ngSubmit)="f.form.valid" class="mt-4" id="payment-form" enctype="multipart/form-data" novalidate="novalidate">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Name" name="name" [(ngModel)]="name" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control"
+                       required
+                       minlength="10"
+                       maxlength="12"
+                       pattern="[0-9]+"
+                       name="phone"
+                       type="tel"
+                       mask="000-000-0000"
+                       placeholder="Phone Number"
+                       [showMaskTyped]="false"
+                       #mobile_phone="ngModel"
+                       [(ngModel)]="phone">
+            </div>
+            <div class="form-group">
+                <select class="form-select" name="city" [(ngModel)]="cityId" required>
+                    <option value="">Select City</option>
+                    <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="form-select" name="category" [(ngModel)]="categoryId" required>
+                    <option value="">Select A Category</option>
+                    <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="form-select" name="amount" [(ngModel)]="amount" required>
+                    <option value="15">3 days with Graphic design - $15</option>
+                    <option value="20">One</option>
+                    <option value="25">Two</option>
+                    <option value="30">Three</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div id="card-errors" class="alert-danger"></div>
+                <div id="card-element"></div>
+            </div>
+            <button type="submit" class="pay-btn mt-3" title="pay now" [disabled]="showLoader">Pay Now <i class="fa fa-spinner fa-spin" *ngIf="showLoader"></i></button>
+        </form>
+        <div class="powered mt-5 text-center">
+            <img class="img-fluid" src="assets/images/stripe-img.png" alt="">
+        </div>
+        <div class="payment-method d-flex align-items-center justify-content-center mt-2">
+            <img class="img-fluid" src="assets/images/visa.png" alt="visa">
+            <img class="img-fluid" src="assets/images/master-card.png" alt="master card">
+            <img class="img-fluid" src="assets/images/american-express.png" alt="american express">
+        </div>
+    </div>
+</section>
+<!-- END PAYMENT FORM -->
