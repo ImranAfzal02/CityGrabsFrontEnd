@@ -121,7 +121,7 @@ export class PaymentComponent implements OnInit {
                         body.set('amount', this.amount.toString());
                         body.set('stripeToken', this.stripeToken);
 
-                        this.service.savePaymentInformation(body).subscribe(data => {
+                        this.service.savePaymentInformation(body.toString()).subscribe(data => {
                             this.showLoader = false;
                         }, error => {
                             this.showLoader = false;
