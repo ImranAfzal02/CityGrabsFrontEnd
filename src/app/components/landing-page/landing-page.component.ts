@@ -3,6 +3,7 @@ import {GeneralService} from '../../services/general.service';
 import {LocalStorageService} from '../../services/local-storage.service';
 import {Route, Router} from '@angular/router';
 import {NotificationService} from '../../services/notification.service';
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'app-landing-page',
@@ -11,6 +12,7 @@ import {NotificationService} from '../../services/notification.service';
 })
 export class LandingPageComponent implements OnInit {
     keyword: string;
+    amdinUrl: string;
     data: any =  [
         {
             id: 1,
@@ -28,11 +30,12 @@ export class LandingPageComponent implements OnInit {
         private notification: NotificationService
     ) {
         this.keyword = 'name';
+        this.amdinUrl = environment.adminUrl;
         this.data = [];
     }
 
     ngOnInit(): void {
-        this.service.getCitiesAdnCategories().subscribe(data => {
+        this.service.getCities().subscribe(data => {
             // @ts-ignore
             this.data = data.data.cities;
             this.storage.setLocalStorageItem('cities', this.data);
@@ -43,7 +46,7 @@ export class LandingPageComponent implements OnInit {
 
     selectEvent = (item: object) => {
         this.storage.setLocalStorageItem('selectedCity', item);
-        this.route.navigateByUrl('city-hall');
+        this.route.navigateByUrl('city-wall');
         // do something with selected item
     }
 

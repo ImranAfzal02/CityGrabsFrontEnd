@@ -8,10 +8,10 @@ import {NotificationService} from '../../services/notification.service';
 
 @Component({
     selector: 'app-city-hall',
-    templateUrl: './city-hall.component.html',
-    styleUrls: ['./city-hall.component.css']
+    templateUrl: './city-wall.component.html',
+    styleUrls: ['./city-wall.component.css']
 })
-export class CityHallComponent implements OnInit {
+export class CityWallComponent implements OnInit {
     customOptions: OwlOptions = {
         loop: true,
         margin: 10,
@@ -38,6 +38,8 @@ export class CityHallComponent implements OnInit {
 
     city: object;
     category: object;
+    showLoader: boolean;
+    showReloadMsg: boolean;
 
     constructor(
         private service: GeneralService,
@@ -51,6 +53,8 @@ export class CityHallComponent implements OnInit {
         this.advertisements = [];
         this.city = {};
         this.category = {};
+        this.showLoader = true;
+        this.showReloadMsg = false;
     }
 
     ngOnInit(): void {
@@ -63,8 +67,11 @@ export class CityHallComponent implements OnInit {
                 this.storage.setLocalStorageItem('categories', this.categories);
                 // @ts-ignore
                 this.advertisements = data.data.advertisements;
+                this.showLoader = false;
+                this.showReloadMsg = false;
             }, error => {
-                this.notification.showError(error, 'error');
+                this.showLoader = false;
+                this.showReloadMsg = true;
             });
         } else {
             this.router.navigateByUrl('/');
@@ -77,12 +84,22 @@ export class CityHallComponent implements OnInit {
 
     filterAddByCategory = (cat: object) => {
         this.category = cat;
+        this.showLoader = true;
         // @ts-ignore
         this.service.filterAddsByCategory(this.city.id, this.category.id).subscribe(data => {
+            this.showLoader = false;
+            this.showReloadMsg = false;
             // @ts-ignore
             this.advertisements = data.data.advertisements;
         }, error => {
+            this.showReloadMsg = true;
+            this.showLoader = false;
             this.notification.showError(error, 'error');
         });
+    }
+
+    reload = (e: any) => {
+        e.preventDefault();
+        window.location.reload();
     }
 }

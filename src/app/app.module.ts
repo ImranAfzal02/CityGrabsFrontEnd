@@ -7,7 +7,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpInterceptorClass} from './interceptors/http-interceptor';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { CityHallComponent } from './components/city-hall/city-hall.component';
+import { CityWallComponent } from './components/city-wall/city-wall.component';
 import {RouterModule} from '@angular/router';
 import {CarouselModule} from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,7 +27,7 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     declarations: [
         AppComponent,
         LandingPageComponent,
-        CityHallComponent,
+        CityWallComponent,
         HeaderComponent,
         PaymentComponent,
     ],

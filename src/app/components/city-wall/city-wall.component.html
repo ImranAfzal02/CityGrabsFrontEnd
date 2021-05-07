@@ -1,6 +1,9 @@
 <app-header></app-header>
-
+<i class="fa fa-2x fa-spinner fa-spin loaderSpinner" *ngIf="showLoader"></i>
 <!-- SLIDER -->
+<small class="color-red" style="margin-left: 10px;" *ngIf="showReloadMsg">
+    Something went wrong. Please <a href="#" (click)="reload($event)">reload</a> this page.
+</small>
 <section class="weekly-deals mt-5 position-relative">
     <div class="container">
         <h2>Select a list for weekly deals</h2>
@@ -22,9 +25,9 @@
     <div class="container">
         <div class="deals-img">
             <ng-template ngFor let-advertisement [ngForOf]="advertisements">
-                <img class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image " data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setPopUpImage(advertisement.popup_image)" alt=" ">
+                <img class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image " data-bs-toggle="modal" data-bs-target="#popupImageModal" (click)="setPopUpImage(advertisement.popup_image)" alt=" ">
             </ng-template>
-            <div *ngIf="advertisements.length == 0">
+            <div *ngIf="advertisements.length == 0 && !showLoader">
                 No advertisement found
             </div>
         </div>
@@ -33,14 +36,14 @@
 <!-- DEALS IMAGES -->
 
 <!-- MODAL 1 -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="popupImageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <img class="img-fluid" [src]="imageBaseUrl + '/' + popUpImage" alt="">
+                <img class="img-fluid full-width-img" [src]="imageBaseUrl + '/' + popUpImage" alt="">
             </div>
         </div>
     </div>

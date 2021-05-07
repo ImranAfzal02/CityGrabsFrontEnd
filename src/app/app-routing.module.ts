@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {LandingPageComponent} from './components/landing-page/landing-page.component';
-import {CityHallComponent} from './components/city-hall/city-hall.component';
+import {CityWallComponent} from './components/city-wall/city-wall.component';
 import {PaymentComponent} from './components/payment/payment.component';
 
 const routes: Routes = [
@@ -10,8 +10,8 @@ const routes: Routes = [
         component: LandingPageComponent
     },
     {
-        path: 'city-hall',
-        component: CityHallComponent
+        path: 'city-wall',
+        component: CityWallComponent
     },
     {
         path: 'payment',

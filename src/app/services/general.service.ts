@@ -11,6 +11,16 @@ export class GeneralService {
         private http: HttpClient
     ) { }
 
+    getCities = () => {
+        const url = environment.apiBaseUrl + '/get-cities';
+        return this.http.get(url);
+    }
+
+    getCategories = () => {
+        const url = environment.apiBaseUrl + '/get-categories';
+        return this.http.get(url);
+    }
+
     getCitiesAdnCategories = () => {
         const url = environment.apiBaseUrl + '/get-cities-and-categories';
         return this.http.get(url);

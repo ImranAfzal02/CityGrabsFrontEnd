@@ -308,7 +308,7 @@ body {
 
 
 
-
+/* MEDIA QUERIES */
 
 @media (max-width: 768px) {
 	.toggle {
@@ -317,24 +317,30 @@ body {
 }
 
 @media (max-width: 576px) {
-  .easy-autocomplete {
-    width: 320px !important;
+	.easy-autocomplete {
+    	width: 345px!important;
+	}
+	.toggle {
+    	left: -7px;
+    	top: 4px;
+	}
+	.navbar .navbar-brand img {
+    	max-width: 150px;
+	}
+	.navbar .pay-logo img {
+    	max-width: 40px;
+	}
+	.payment-method img {
+		max-width: 100px;
   }
-
-  .toggle {
-    left: -7px;
-    top: 4px;
+  .search-logo img {
+    max-width: 250px;
   }
-
-  .navbar .navbar-brand img {
-    max-width: 150px;
+  .home-search .form-group {
+    margin-top: -2rem !important;
   }
-
-  .navbar .pay-logo img {
-    max-width: 40px;
-  }
-
-  .payment-method img {
-    max-width: 100px;
+  .search-logo {
+    position: relative;
+    top: -50px;
   }
 }

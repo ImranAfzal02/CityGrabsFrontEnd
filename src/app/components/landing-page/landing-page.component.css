@@ -1,3 +1,23 @@
-.ng-autocomplete {
-    width: 310px !important;
+::ng-deep .autocomplete-container .input-container input {
+    height: 50px !important;
+}
+.color-white {
+    color: white !important;
+}
+@media screen and (max-width: 768px) {
+    .ng-autocomplete {
+        width: 95% !important;
+        height: 50px !important;
+        margin: auto;
+    }
+    ::ng-deep .autocomplete-container .input-container input {
+        background-color: #f5f5f5 !important;
+        box-shadow: none !important;
+        border-radius: 2px !important;
+        height: 50px !important;
+        border: none !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;
+    }
 }

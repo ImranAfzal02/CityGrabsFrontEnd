@@ -1,0 +1,22 @@
+#popupImageModal .modal-body{
+    width: 100%;
+}
+
+#popupImageModal .modal-content{
+    background: none;
+}
+
+.full-width-img{
+    width: 100%;
+}
+
+.color-red {
+    color: red;
+}
+
+.loaderSpinner {
+    position: absolute;
+    left: 50%;
+    top: 43%;
+    z-index: 9999;
+}
