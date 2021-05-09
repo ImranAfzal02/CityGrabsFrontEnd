@@ -7,8 +7,8 @@ export const environment = {
     baseUrl : 'http://localhost:4200',
     apiBaseUrl : 'http://citygrabs.local/api',
     imageBaseUrl: 'http://citygrabs.local',
-    STRIPE_KEY: 'pk_test_bEAMH4DR5R1TOtiWVN7YGZbB',
-    STRIPE_SECRET: 'sk_test_orabQwYWWZ1RpZA7VftIGMGq',
+    STRIPE_KEY: 'pk_test_XfqiesMVKkD9E4CLzTdvh31L',
+    STRIPE_SECRET: 'sk_test_LEvFI2SuzT41YFjW6U51NrbT',
     adminUrl: 'http://citygrabs.local'
 };
 

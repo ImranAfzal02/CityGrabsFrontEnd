@@ -38,7 +38,7 @@ export class PaymentComponent implements OnInit {
         this.error = '';
         this.cityId = '';
         this.categoryId = '';
-        this.amount = 15;
+        this.amount = 10;
         this.showLoader = false;
     }
 
@@ -122,6 +122,16 @@ export class PaymentComponent implements OnInit {
                         body.set('stripeToken', this.stripeToken);
 
                         this.service.savePaymentInformation(body.toString()).subscribe(data => {
+                            // if(data.status==200){}
+                            const response:any=data
+                            if(response.status==200){
+                                this.notification.showSuccess(response.message, 'Success');
+                                this.ngOnInit();
+                                this.resetForm();
+                            }else{
+                                this.notification.showError(response.message, 'error');
+                            }
+                           
                             this.showLoader = false;
                         }, error => {
                             this.showLoader = false;
@@ -135,6 +145,13 @@ export class PaymentComponent implements OnInit {
             });
         });
 
+    }
+
+    resetForm(){
+        this.name='';
+        this.phone='';
+        this.categoryId='';
+        this.cityId='';
     }
 
 }
