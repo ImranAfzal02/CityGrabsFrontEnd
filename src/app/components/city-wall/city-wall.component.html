@@ -6,7 +6,7 @@
 </small>
 <section class="weekly-deals mt-5 position-relative">
     <div class="container">
-        <h2>Select a list for weekly deals</h2>
+        <h2>Select a weekly deal!</h2>
         <div class="mt-4">
             <owl-carousel-o [options]="customOptions">
                 <ng-container *ngFor="let cat of categories">
@@ -25,7 +25,9 @@
     <div class="container">
         <div class="deals-img">
             <ng-template ngFor let-advertisement [ngForOf]="advertisements">
-                <img class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image " data-bs-toggle="modal" data-bs-target="#popupImageModal" (click)="setPopUpImage(advertisement.popup_image)" alt=" ">
+                <img *ngIf="advertisement.popup_image" class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image " data-bs-toggle="modal" data-bs-target="#popupImageModal" (click)="setPopUpImage(advertisement.popup_image)" alt=" ">
+                <img *ngIf="!advertisement.popup_image" class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image" alt=" ">
+      
             </ng-template>
             <div *ngIf="advertisements.length == 0 && !showLoader">
                 No advertisement found
