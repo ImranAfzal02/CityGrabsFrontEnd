@@ -215,21 +215,52 @@ body {
 	text-align: center;
 	color: var(--bg-color-2)
 }
-
-.weekly-deals::before {
-	content: '';
-	position: absolute;
-	bottom: -20px;
-	background-color: var(--black);
-	width: 90%;
-    height: 2px;
-    left: 5%;
+.jobs-links {
+  border-bottom: 2px solid var(--black);
+}
+.jobs-links a {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+}
+.jobs-links a:first-child {
+  display: block;
+  color: var(--black);
+}
+.jobs-links a:nth-child(2) {
+  display: block;
+  color: var(--bg-color-2);
 }
 .deals-img img {
 	margin-bottom: 20px;
 	border-radius: 6px;
 }
+.copyright {
+  margin-top: 80px;
+}
 
+/* FOOTER STYLE */
+.footer {
+  position: fixed;
+  bottom: 36px;
+  width: 14%;
+  height: auto;
+  line-height: 30px;
+  min-height: 0px;
+  background-color: var(--primary);
+  left: 46%;
+  border-radius: 20px;
+}
+.footer-btn {
+  height: 30px;
+  line-height: 30px;
+}
+.footer-btn a {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--white);
+}
 /* MODAL STYLE */
 .modal-header .btn-close {
     padding: 0;
@@ -286,7 +317,7 @@ body {
 	color: var(--white);
 	font-size: 22px;
 	font-weight: 600;
-	width: 300px;
+	width: 350px;
     height: 70px;
     line-height: 70px;
 	border-radius: 10px;
@@ -297,15 +328,19 @@ body {
 .pay-btn:hover {
 	color: var(--white);
 }
+.powered img {
+  display: block;
+  max-width: 300px;
+  margin: auto;
+}
 .payment-method img {
 	margin-left: 20px;
+  display: block;
+  max-width: 100px;
 }
 .payment-method img:first-child {
 	margin-left: 0;
 }
-
-
-
 
 
 /* MEDIA QUERIES */
@@ -314,6 +349,10 @@ body {
 	.toggle {
     	left: 18px;
 	}
+  .footer {
+    width: 26%;
+    left: 40%;
+  }
 }
 
 @media (max-width: 576px) {
@@ -340,7 +379,13 @@ body {
     margin-top: -2rem !important;
   }
   .search-logo {
-    position: relative;
     top: -50px;
+  }
+  .jobs-links a:first-child {
+    font-size: 14px;
+  }
+  .footer {
+    width: 40%;
+    left: 30%;
   }
 }

@@ -36,8 +36,9 @@ export class CityWallComponent implements OnInit {
     categories: any;
     advertisements: any;
 
-    city: object;
-    category: object;
+    city: any;
+    category: any;
+    prominentCategories: any;
     showLoader: boolean;
     showReloadMsg: boolean;
 
@@ -50,6 +51,7 @@ export class CityWallComponent implements OnInit {
         this.imageBaseUrl = environment.imageBaseUrl;
         this.popUpImage = '';
         this.categories = [];
+        this.prominentCategories = [];
         this.advertisements = [];
         this.city = {};
         this.category = {};
@@ -64,6 +66,9 @@ export class CityWallComponent implements OnInit {
             this.service.getCityHallData(this.city.id).subscribe(data => {
                 // @ts-ignore
                 this.categories = data.data.categories;
+                // @ts-ignore
+                this.prominentCategories = data.data.prominent_categories;
+                console.log(this.prominentCategories[0].name);
                 this.storage.setLocalStorageItem('categories', this.categories);
                 // @ts-ignore
                 this.advertisements = data.data.advertisements;
