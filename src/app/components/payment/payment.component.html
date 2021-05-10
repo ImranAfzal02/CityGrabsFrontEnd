@@ -1,6 +1,6 @@
 <app-header></app-header>
 <!-- PAYMENT FORM -->
-<section class="payment-form mt-5">
+<section class="payment-form mt-2">
     <div class="container">
         <h3>Payment Center</h3>
         <p>Select the City and Category duration time for ad listing</p>
@@ -47,16 +47,14 @@
                 <div id="card-errors" class="alert-danger"></div>
                 <div id="card-element"></div>
             </div>
+            <div class="form-group">
             <button type="submit" class="pay-btn mt-3" title="pay now" [disabled]="showLoader">Pay Now <i class="fa fa-spinner fa-spin" *ngIf="showLoader"></i></button>
+            </div>
         </form>
         <div class="powered mt-5 text-center">
-            <img class="img-fluid" src="assets/images/stripe-img.png" alt="">
+            <img class="img-fluid" src="assets/images/stripe-img.jfif" alt="">
         </div>
-        <div class="payment-method d-flex align-items-center justify-content-center mt-2">
-            <img class="img-fluid" src="assets/images/visa.png" alt="visa">
-            <img class="img-fluid" src="assets/images/master-card.png" alt="master card">
-            <img class="img-fluid" src="assets/images/american-express.png" alt="american express">
-        </div>
+
         <div class="copyright">
             <p>Citygrabs © 2021</p>
         </div>
