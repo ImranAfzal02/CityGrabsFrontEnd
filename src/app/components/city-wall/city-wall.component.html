@@ -30,7 +30,7 @@
             <ng-template ngFor let-advertisement [ngForOf]="advertisements">
                 <img *ngIf="advertisement.popup_image" class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image " data-bs-toggle="modal" data-bs-target="#popupImageModal" (click)="setPopUpImage(advertisement.popup_image)" alt=" ">
                 <img *ngIf="!advertisement.popup_image" class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image" alt=" ">
-
+                <hr class="dropdown-divider">
             </ng-template>
             <div *ngIf="advertisements.length == 0 && !showLoader">
                 No advertisement found

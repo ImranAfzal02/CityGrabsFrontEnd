@@ -32,6 +32,7 @@ body {
 	font-family: 'Poppins', sans-serif;
 }
 
+/* SEARCH PAGE STYLE */
 .main-content::before, .main-content::after {
     content: "";
     position: absolute;
@@ -102,9 +103,9 @@ body {
 	font-size: 14px;
 	font-weight: 400;
 	position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .footer-links a, .footer-links a:hover {
     color: #000 !important;
@@ -114,6 +115,7 @@ body {
 	font-weight: 700;
 }
 
+/* INDEX PAGE STYL */
 /* NAVBAR STYLE */
 .navbar {
 	background-color: var(--primary);
@@ -232,8 +234,11 @@ body {
   color: var(--bg-color-2);
 }
 .deals-img img {
-	margin-bottom: 20px;
-	border-radius: 6px;
+	border: 1px solid var(--black);
+}
+.dropdown-divider {
+  height: 2px!important;
+  margin: 20px;
 }
 .copyright {
   margin-top: 80px;
@@ -243,9 +248,8 @@ body {
 .footer {
   position: fixed;
   bottom: 36px;
-  width: 14%;
+  width: 200px;
   height: auto;
-  line-height: 30px;
   min-height: 0px;
   background-color: var(--primary);
   left: 46%;
@@ -279,6 +283,7 @@ body {
     top: 15px;
     opacity: 1;
 }
+
 /* PAYMENT FORM STYLE*/
 .payment-form h3 {
 	font-size: 22px;
@@ -318,8 +323,8 @@ body {
 	font-size: 22px;
 	font-weight: 600;
 	width: 350px;
-    height: 70px;
-    line-height: 70px;
+  height: 70px;
+  line-height: 70px;
 	border-radius: 10px;
 	text-transform: uppercase;
 	text-align: center;
@@ -350,7 +355,6 @@ body {
     	left: 18px;
 	}
   .footer {
-    width: 26%;
     left: 40%;
   }
 }
@@ -385,7 +389,6 @@ body {
     font-size: 14px;
   }
   .footer {
-    width: 40%;
-    left: 30%;
+    left: 25%;
   }
 }
