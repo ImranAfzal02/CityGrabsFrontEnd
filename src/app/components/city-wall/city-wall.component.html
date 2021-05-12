@@ -10,8 +10,8 @@
         <div class="mt-2">
             <owl-carousel-o [options]="customOptions">
                 <ng-container *ngFor="let cat of categories">
-                    <ng-template carouselSlide [id] = "cat.id">
-                        <div class="item" (click)="filterAddByCategory(cat)">{{ cat.name }}</div>
+                    <ng-template [width]="(cat.name.length*15)<=60?70:(cat.name.length*15)" carouselSlide [id] = "cat.id">
+                        <div  class="item" (click)="filterAddByCategory(cat)">{{ cat.name }}</div>
                     </ng-template>
                 </ng-container>
             </owl-carousel-o>

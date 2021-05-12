@@ -15,22 +15,13 @@ export class CityWallComponent implements OnInit {
     customOptions: OwlOptions = {
         loop: true,
         margin: 10,
-        lazyLoad: true,
+
         dots: false,
         autoplay: true,
-        responsive: {
-            0: {
-                items: 3,
-            },
-            767: {
-                items: 6,
-            },
-            1200: {
-                items: 9
-            }
-        }
-    };
+        autoWidth:true,
 
+    };
+    number:any;
     imageBaseUrl: string;
     popUpImage: string;
     categories: any;
@@ -57,6 +48,7 @@ export class CityWallComponent implements OnInit {
         this.category = {};
         this.showLoader = true;
         this.showReloadMsg = false;
+        this.number=200;
     }
 
     ngOnInit(): void {
