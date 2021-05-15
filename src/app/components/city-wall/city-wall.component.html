@@ -16,7 +16,7 @@
                 </ng-container>
             </owl-carousel-o>
             <div class="jobs-links mt-2 d-flex align-items-center justify-content-between">
-                <a href="javascript:;" *ngFor="let cat of prominentCategories" (click)="filterAddByCategory(cat)" [title]="cat.name">{{ cat.name }}</a>
+                <a href="javascript:;" class="category-links" *ngFor="let cat of prominentCategories" (click)="filterAddByCategory(cat)" [title]="cat.name">{{ cat.name }}</a>
             </div>
         </div>
     </div>

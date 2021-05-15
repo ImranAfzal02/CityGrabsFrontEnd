@@ -13,16 +13,8 @@ import {environment} from '../../../environments/environment';
 export class LandingPageComponent implements OnInit {
     keyword: string;
     amdinUrl: string;
-    data: any =  [
-        {
-            id: 1,
-            name: 'Usa'
-        },
-        {
-            id: 2,
-            name: 'England'
-        }
-    ];
+    data: any;
+
     constructor(
         private service: GeneralService,
         private storage: LocalStorageService,

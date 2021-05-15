@@ -35,5 +35,14 @@
     font-weight: 100;
 }
 
+@font-face {
+    font-family: 'Franklin';
+    src: url("../../../assets/font/Franklin-Regular.ttf");
+}
+
+.category-links {
+    font-family: Franklin !important;
+}
+
 
 
