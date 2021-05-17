@@ -38,7 +38,7 @@ export class PaymentComponent implements OnInit {
         this.error = '';
         this.cityId = '';
         this.categoryId = '';
-        this.amount = 10;
+        this.amount = 25;
         this.showLoader = false;
     }
 
@@ -131,7 +131,7 @@ export class PaymentComponent implements OnInit {
                             }else{
                                 this.notification.showError(response.message, 'error');
                             }
-                           
+
                             this.showLoader = false;
                         }, error => {
                             this.showLoader = false;

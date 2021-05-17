@@ -7,13 +7,19 @@
     font-weight: 100;
     background: #3056d3;
     padding: 5px 10px;
-    border: 2px solid #b3b3b3;
+    border: 2px solid #3056d3;
     text-transform: uppercase;
     text-align: center;
     color: white;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .owl-item {
     width: auto;
+}
+
+
+.deals-img img{
+    border-radius: 5px;
 }
