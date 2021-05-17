@@ -28,8 +28,21 @@
     <div class="container">
         <div class="deals-img">
             <ng-template ngFor let-advertisement [ngForOf]="advertisements">
-                <img *ngIf="advertisement.popup_image" class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image " data-bs-toggle="modal" data-bs-target="#popupImageModal" (click)="setPopUpImage(advertisement.popup_image)" alt=" ">
-                <img *ngIf="!advertisement.popup_image" class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image" alt=" ">
+                <div class="deals-img-icons position-relative">
+                    <div class="img-icons d-flex align-items-center">
+                        <div class="svg-icon" [hidden]="!advertisement.phone" (click)="initiateCall(advertisement)">
+                            <svg class="icon icon-telephone" width="14" height="14">
+                                <use href="assets/images/sprite.svg#telephone"></use>
+                            </svg>
+                        </div>
+                        <div class="svg-icon" [hidden]="!advertisement.popup_image" data-bs-toggle="modal" data-bs-target="#popupImageModal" (click)="setPopUpImage(advertisement.popup_image)">
+                            <svg class="icon icon-speaker" width="14" height="14">
+                                <use href="assets/images/sprite.svg#speaker"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <img class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image" alt=" ">
                 <hr class="dropdown-divider">
             </ng-template>
             <div *ngIf="advertisements.length == 0 && !showLoader">

@@ -95,6 +95,11 @@ export class CityWallComponent implements OnInit {
         });
     }
 
+    initiateCall = (advertisement: any) => {
+        // @ts-ignore
+        window.location = 'tel:' + advertisement.phone;
+    }
+
     reload = (e: any) => {
         e.preventDefault();
         window.location.reload();
