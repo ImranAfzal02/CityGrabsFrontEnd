@@ -16,6 +16,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 import {FormsModule} from '@angular/forms';
 import {IConfig, NgxMaskModule} from 'ngx-mask';
 import {ToastrModule} from 'ngx-toastr';
+import {NgbDatepicker, NgbDatepickerModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -44,7 +45,9 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         ToastrModule.forRoot({
             timeOut: 10000,
         }),
-        NgxMaskModule
+        NgxMaskModule,
+        NgbModule,
+        NgbDatepickerModule
     ],
     providers: [
         {

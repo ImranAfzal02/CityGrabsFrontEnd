@@ -44,5 +44,12 @@
     font-family: Franklin !important;
 }
 
+.jobs-links a:nth-child(2){
+    color:#000;
+}
 
+
+.jobs-links a{
+color:#000;
+}
 

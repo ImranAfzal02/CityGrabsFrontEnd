@@ -3,7 +3,10 @@ import {LocalStorageService} from '../../services/local-storage.service';
 import {GeneralService} from '../../services/general.service';
 import {environment} from '../../../environments/environment';
 import {DynamicScriptLoaderService} from '../../services/dynamic-script-loader.service';
-import {NotificationService} from '../../services/notification.service';
+import {NotificationService} from '../../services/notification.service'
+import {DatePickerComponent} from 'ng2-date-picker';
+import {NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
+
 declare var Stripe: any;
 
 @Component({
@@ -20,9 +23,13 @@ export class PaymentComponent implements OnInit {
     cityId: string;
     categoryId: string;
     amount: number;
+    // @ts-ignore
+    uploadDate: NgbDateStruct;
     stripeToken: string;
     error: string;
     showLoader: boolean;
+
+
 
     constructor(
         private service: GeneralService,
@@ -40,6 +47,7 @@ export class PaymentComponent implements OnInit {
         this.categoryId = '';
         this.amount = 25;
         this.showLoader = false;
+
     }
 
     ngOnInit(): void {
@@ -111,13 +119,18 @@ export class PaymentComponent implements OnInit {
                     // @ts-ignore
                     errorElement.textContent = result.error.message;
                 } else {
+                    console.log(this.uploadDate);
                     if (this.name !== '' && this.phone !== '' && this.cityId !== '' && this.categoryId !== '' && this.amount != 0) {
                         this.stripeToken = result.token.id;
+
+                        let upDate=this.uploadDate.year+'-'+this.uploadDate.month+'-'+this.uploadDate.day;
+
                         let body = new URLSearchParams();
                         body.set('name', this.name);
                         body.set('phone', this.phone);
                         body.set('city_id', this.cityId);
                         body.set('category_id', this.categoryId);
+                        body.set('upload_date', upDate);
                         body.set('amount', this.amount.toString());
                         body.set('stripeToken', this.stripeToken);
 
