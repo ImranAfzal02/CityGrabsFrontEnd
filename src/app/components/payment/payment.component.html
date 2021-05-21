@@ -12,11 +12,11 @@
                 <input class="form-control"
                        required
                        minlength="10"
-                       maxlength="12"
+                       maxlength="14"
                        pattern="[0-9]+"
                        name="phone"
                        type="tel"
-                       mask="000-000-0000"
+                       mask="0-000-000-0000"
                        placeholder="Phone Number"
                        [showMaskTyped]="false"
                        #mobile_phone="ngModel"
@@ -43,8 +43,9 @@
             </div>
             <div class="form-group">
 
-
+                <label>Select Date Run</label>
                 <div class="input-group">
+
                     <input class="form-control" placeholder="yyyy-mm-dd"
                            name="dp" [(ngModel)]="uploadDate" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" readonly>
                     <div class="input-group-append">

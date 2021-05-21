@@ -14,7 +14,9 @@
     font-family: 'Franklin Gothic Condensed';
     font-style: normal;
     font-weight: normal;
+    src: local('Franklin Gothic Condensed'), url('../font/Franklin Gothic Condensed.woff') format('woff');
 }
+
 
 @font-face {
     font-family: 'Franklin Gothic ITALIC';
@@ -245,21 +247,36 @@ body {
 }
 .jobs-links {
     border-bottom: 2px solid var(--black);
-    font-family: 'Franklin Gothic Regular';
+    /*font-family: 'Franklin Gothic Condensed';*/
+    font-family: Arial, sans-serif;
 }
+
 .jobs-links a {
     display: block;
     font-size: 18px;
     font-weight: 500;
+    color: #f36523;
+    position: relative;
+    margin-left: 20px;
 }
-.jobs-links a:first-child {
-    display: block;
-    color: var(--black);
+.jobs-links a::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: -11px;
+    background-color: #343233;
+    width: 2px;
+    height: 14px;
 }
-.jobs-links a:nth-child(2) {
-    display: block;
-    color: var(--bg-color-2);
+
+.jobs-links a:first-child{
+    margin-left: 0px;
 }
+
+.jobs-links a:first-child::before {
+    width: 0;
+}
+
 .deals-img img {
     box-shadow: 0 30px 30px 0 rgb(0 0 0 / 20%), 0 -6px 30px 0 rgb(0 0 0 / 10%);
     border-radius: 5px;
@@ -429,10 +446,7 @@ body {
     .search-logo {
         top: -50px;
     }
-    .jobs-links a:first-child {
-        font-size: 14px;
-    }
-    .jobs-links a:nth-child(2) {
+    .jobs-links a {
         font-size: 16px;
     }
     .footer {
