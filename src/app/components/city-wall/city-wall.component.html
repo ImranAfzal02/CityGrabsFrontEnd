@@ -35,7 +35,7 @@
                                 <use href="assets/images/sprite.svg#telephone"></use>
                             </svg>
                         </div>
-                        <div class="svg-icon" [hidden]="!advertisement.popup_image" data-bs-toggle="modal" data-bs-target="#popupImageModal" (click)="setPopUpImage(advertisement.popup_image)">
+                        <div class="svg-icon" [hidden]="advertisement.popupImages.length === 0" data-bs-toggle="modal" data-bs-target="#popupImageModal" (click)="setPopUpImage(advertisement.popupImages)">
                             <svg class="icon icon-speaker" width="14" height="14">
                                 <use href="assets/images/sprite.svg#speaker"></use>
                             </svg>
@@ -68,7 +68,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <img class="img-fluid full-width-img" [src]="imageBaseUrl + '/' + popUpImage" alt="">
+                <div class="modal-images" *ngFor="let img of this.popupImages">
+                    <img class="img-fluid full-width-img" [src]="imageBaseUrl + '/' + img.image_url" alt="">
+                    <p [innerText]="img.description"></p>
+                </div>
             </div>
         </div>
     </div>

@@ -18,14 +18,15 @@ export class CityWallComponent implements OnInit {
 
         dots: false,
         autoplay: true,
-        autoWidth:true,
+        autoWidth: true,
 
     };
-    number:any;
+    number: any;
     imageBaseUrl: string;
     popUpImage: string;
     categories: any;
     advertisements: any;
+    popupImages: any;
 
     city: any;
     category: any;
@@ -44,11 +45,12 @@ export class CityWallComponent implements OnInit {
         this.categories = [];
         this.prominentCategories = [];
         this.advertisements = [];
+        this.popupImages = [];
         this.city = {};
         this.category = {};
         this.showLoader = true;
         this.showReloadMsg = false;
-        this.number=200;
+        this.number = 200;
     }
 
     ngOnInit(): void {
@@ -75,8 +77,8 @@ export class CityWallComponent implements OnInit {
         }
 
     }
-    setPopUpImage = (url: string) => {
-        this.popUpImage = url;
+    setPopUpImage = (popupImages: any) => {
+        this.popupImages = popupImages;
     }
 
     filterAddByCategory = (cat: object) => {

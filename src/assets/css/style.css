@@ -326,16 +326,26 @@ body {
     font-weight: 500;
     color: var(--white);
 }
+
 /* MODAL STYLE */
-.modal-header .btn-close {
-    padding: 0;
+.modal-content {
+    background-color: transparent;
+    border: none;
 }
 .modal-body {
     padding: 0;
 }
+.modal-images p {
+    color: var(--white);
+    font-weight: 600;
+    margin-top: 6px;
+}
 .modal-header {
     padding: 0;
     border-bottom: 0;
+}
+.modal-header .btn-close {
+    padding: 0;
 }
 .btn-close {
     position: absolute;
@@ -344,6 +354,7 @@ body {
     top: 15px;
     opacity: 1;
 }
+
 
 /* PAYMENT FORM STYLE*/
 .payment-form h3 {
@@ -446,7 +457,10 @@ body {
     .search-logo {
         top: -50px;
     }
-    .jobs-links a {
+    .jobs-links a:first-child {
+        font-size: 14px;
+    }
+    .jobs-links a:nth-child(2) {
         font-size: 16px;
     }
     .footer {
