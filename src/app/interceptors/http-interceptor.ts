@@ -24,13 +24,7 @@ export class HttpInterceptorClass implements HttpInterceptor {
             catchError((error: HttpErrorResponse) => {
                 console.log('Interceptor error --->>>', error);
                 return this.exceptionHandling.handleError(error);
-                // let errorMessage = '';
-                // if (error.hasOwnProperty('error') && typeof error.error === 'string') {
-                //     errorMessage = error.error;
-                // } else {
-                //     errorMessage = 'Something went wrong.';
-                // }
-                // return throwError(errorMessage);
-            }));
+            })
+        );
     }
 }

@@ -23,7 +23,8 @@ export class ExceptionHandlingService {
             }
             console.log('Exception Handling ' + errorMessage);
         } else if (error.hasOwnProperty('message')) {
-            errorMessage = error.message;
+            // errorMessage = error.message;
+            errorMessage = 'Something went wrong.';
         } else {
             errorMessage = 'Something went wrong.';
         }

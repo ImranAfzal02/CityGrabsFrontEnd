@@ -3,9 +3,9 @@ import {LocalStorageService} from '../../services/local-storage.service';
 import {GeneralService} from '../../services/general.service';
 import {environment} from '../../../environments/environment';
 import {DynamicScriptLoaderService} from '../../services/dynamic-script-loader.service';
-import {NotificationService} from '../../services/notification.service'
+import {NotificationService} from '../../services/notification.service';
 import {DatePickerComponent} from 'ng2-date-picker';
-import {NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 declare var Stripe: any;
 
@@ -17,12 +17,17 @@ declare var Stripe: any;
 export class PaymentComponent implements OnInit {
     cities: any;
     categories: any;
+    categoriesToShow: any;
+    categoryTypes: any;
 
     name: string;
     phone: string;
     cityId: string;
     categoryId: string;
+    categoryTypeId: string;
     amount: number;
+    amountData: any;
+    selectedAmountData: any;
     // @ts-ignore
     uploadDate: NgbDateStruct;
     stripeToken: string;
@@ -39,14 +44,49 @@ export class PaymentComponent implements OnInit {
     ) {
         this.cities = [];
         this.categories = [];
+        this.categoriesToShow = [];
         this.name = '';
         this.phone = '';
         this.stripeToken = '';
         this.error = '';
         this.cityId = '';
         this.categoryId = '';
-        this.amount = 25;
+        this.categoryTypeId = '';
+        this.amount = 0;
         this.showLoader = false;
+
+        this.selectedAmountData = [
+            {
+                value: 0,
+                label: 'Select Price Package'
+            }
+        ];
+
+        this.categoryTypes = [
+            {
+                id: 1,
+                name: 'Prime Category'
+            },
+            {
+                id: 2,
+                name: 'General  Category'
+            }
+        ];
+
+        this.amountData = [
+            {
+                value: 25,
+                label: '$25 w/25 Ads Design'
+            },
+            {
+                value: 35,
+                label: '$35 w/35 Ads Design'
+            },
+            {
+                value: 50,
+                label: '$50 w/50 Ads Design'
+            }
+        ];
 
     }
 
@@ -120,10 +160,16 @@ export class PaymentComponent implements OnInit {
                     errorElement.textContent = result.error.message;
                 } else {
                     console.log(this.uploadDate);
-                    if (this.name !== '' && this.phone !== '' && this.cityId !== '' && this.categoryId !== '' && this.amount != 0) {
+                    if (this.name !== ''
+                        && this.phone !== ''
+                        && this.cityId !== ''
+                        && this.categoryId !== ''
+                        && this.categoryTypeId !== ''
+                        && this.amount !== 0
+                    ) {
                         this.stripeToken = result.token.id;
 
-                        let upDate=this.uploadDate.year+'-'+this.uploadDate.month+'-'+this.uploadDate.day;
+                        const upDate = this.uploadDate.year + '-' + this.uploadDate.month + '-' + this.uploadDate.day;
 
                         let body = new URLSearchParams();
                         body.set('name', this.name);
@@ -136,8 +182,8 @@ export class PaymentComponent implements OnInit {
 
                         this.service.savePaymentInformation(body.toString()).subscribe(data => {
                             // if(data.status==200){}
-                            const response:any=data
-                            if(response.status==200){
+                            const response: any = data;
+                            if (response.status === 200){
                                 this.notification.showSuccess(response.message, 'Success');
                                 this.ngOnInit();
                                 this.resetForm();
@@ -160,11 +206,71 @@ export class PaymentComponent implements OnInit {
 
     }
 
-    resetForm(){
-        this.name='';
-        this.phone='';
-        this.categoryId='';
-        this.cityId='';
+    resetForm = () => {
+        this.name = '';
+        this.phone = '';
+        this.categoryId = '';
+        this.cityId = '';
+        this.selectedAmountData = [
+            {
+                value: 0,
+                label: 'Select Price Package'
+            }
+        ];
+        this.amount = 0;
+    }
+
+    filterCategories = () => {
+        // tslint:disable-next-line:radix
+        if (parseInt(this.categoryTypeId) === 1) {
+            this.categoriesToShow = this.categories.filter((item: { isProminent: number; }) => item.isProminent == 1);
+            console.log(this.categoriesToShow);
+        // tslint:disable-next-line:radix
+        } else if (parseInt(this.categoryTypeId) === 2) {
+            this.categoriesToShow = this.categories.filter((item: { isProminent: number; }) => item.isProminent == 0);
+            console.log(this.categoriesToShow);
+        } else {
+            this.categoriesToShow = [];
+        }
+        this.selectedAmountData = [
+            {
+                value: 0,
+                label: 'Select Price Package'
+            }
+        ];
+    }
+
+    filterPricePackage = () => {
+        // tslint:disable-next-line:radix
+        const catId = parseInt(this.categoryId);
+        if (catId === 7) {
+            this.amount = 100;
+            this.selectedAmountData = [
+                {
+                    value: 100,
+                    label: '$100 per week / 100 Ads'
+                }
+            ];
+        } else if (catId === 8) {
+            this.amount = 25;
+            this.selectedAmountData = [
+                {
+                    value: 25,
+                    label: '$25 per month / 10 Ads'
+                }
+            ];
+        } else if (catId === 9) {
+            this.amount = 15;
+            this.selectedAmountData = [
+                {
+                    value: 15,
+                    label: '$15 per week / Ad flyer Only'
+                }
+            ];
+        } else {
+            this.amount = 25;
+            this.selectedAmountData = this.amountData;
+        }
     }
 
 }
