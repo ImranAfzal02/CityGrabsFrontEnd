@@ -23,6 +23,7 @@ export class CityWallComponent implements OnInit {
     };
     number: any;
     imageBaseUrl: string;
+    keyword: string;
     popUpImage: string;
     categories: any;
     advertisements: any;
@@ -31,6 +32,7 @@ export class CityWallComponent implements OnInit {
     city: any;
     category: any;
     prominentCategories: any;
+    searchableCategories: any;
     showLoader: boolean;
     showReloadMsg: boolean;
 
@@ -44,6 +46,7 @@ export class CityWallComponent implements OnInit {
         this.popUpImage = '';
         this.categories = [];
         this.prominentCategories = [];
+        this.searchableCategories = [];
         this.advertisements = [];
         this.popupImages = [];
         this.city = {};
@@ -51,6 +54,7 @@ export class CityWallComponent implements OnInit {
         this.showLoader = true;
         this.showReloadMsg = false;
         this.number = 200;
+        this.keyword = 'name';
     }
 
     ngOnInit(): void {
@@ -62,7 +66,8 @@ export class CityWallComponent implements OnInit {
                 this.categories = data.data.categories;
                 // @ts-ignore
                 this.prominentCategories = data.data.prominent_categories;
-                console.log(this.prominentCategories[0].name);
+                // @ts-ignore
+                this.searchableCategories = data.data.searchable_categories;
                 this.storage.setLocalStorageItem('categories', this.categories);
                 // @ts-ignore
                 this.advertisements = data.data.advertisements;
@@ -105,5 +110,21 @@ export class CityWallComponent implements OnInit {
     reload = (e: any) => {
         e.preventDefault();
         window.location.reload();
+    }
+
+    selectEvent = (item: object) => {
+        console.log(item);
+        this.filterAddByCategory(item);
+        // do something with selected item
+    }
+
+    onChangeSearch = (val: string) => {
+        // fetch remote data from here
+        // And reassign the 'data' which is binded to 'data' property.
+    }
+
+    onFocused = (e: any) => {
+        e.stopPropagation();
+        // do something when input is focused
     }
 }

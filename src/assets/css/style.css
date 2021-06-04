@@ -142,7 +142,7 @@ body {
     font-weight: 700;
 }
 
-/* INDEX PAGE STYL */
+/* INDEX PAGE STYLE */
 /* NAVBAR STYLE */
 .navbar {
     background-color: var(--primary);
@@ -227,11 +227,88 @@ body {
 }
 
 /* SLIDER STYLE */
+::selection {
+    color: #fff;
+    background: #000;
+}
+.wrapper {
+    max-width: 450px;
+    height: 55px !important;
+    margin: auto;
+}
+.wrapper .search-input .autocomplete-container .input-container {
+    background: var(--white);
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
+}
+.search-input .autocomplete-container .input-container input {
+    height: 55px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 0 60px 0 20px;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+}
+.wrapper .search-input .autocomplete-container .input-container ::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+    color: #b0b0b0;
+}
+.search-input.active .autocomplete-container .input-container input {
+    border-radius: 5px 5px 0 0;
+}
+
+/*.search-input .autocomplete-container {*/
+/*  padding: 0;*/
+/*  opacity: 0;*/
+/*  pointer-events: none;*/
+/*  max-height: 280px;*/
+/*  overflow-y: auto;*/
+/*}*/
+
+.search-input.active .autocomplete-container .suggestions-container {
+    padding: 10px 8px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.autocomplete-container .suggestions-container ul li {
+    list-style: none !important;
+    padding: 8px 12px !important;
+    /*display: none !important;*/
+    width: 100% !important;
+    cursor: default !important;
+    border-radius: 3px !important;
+}
+
+.autocomplete-container .suggestions-container ul li {
+    display: block !important;
+}
+.autocomplete-container .suggestions-container ul li:hover {
+    background: #f2f2f2 !important;
+}
+
+.search-input .icon {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    line-height: 55px;
+    font-size: 20px;
+    color: var(--black);
+    cursor: pointer;
+}
 .weekly-deals h2 {
     font-size: 22px;
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
+    margin-top: 20px;
 }
 .owl-carousel .item a {
     display: block;
@@ -297,9 +374,11 @@ body {
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     cursor: pointer;
 }
+
 .dropdown-divider {
     height: 2px!important;
-    margin: 20px;
+    margin: 20px 0;
+    border-top: 1px solid black;
 }
 .copyright {
     margin-top: 80px;
@@ -309,36 +388,64 @@ body {
 .footer {
     position: fixed;
     bottom: 36px;
-    width: 200px;
+    width: 100%;
     height: auto;
-    min-height: 0px;
-    background-color: var(--primary);
-    left: 46%;
-    border-radius: 20px;
+    /* background: linear-gradient(#F0D6D9, #FCF6F6); */
+    padding-bottom: 20px;
+    left: 0;
+    z-index: 999;
 }
 .footer-btn {
+    width: 200px;
+    margin: auto;
     height: 30px;
     line-height: 30px;
 }
 .footer-btn a {
-    font-size: 18px;
-    text-transform: uppercase;
-    font-weight: 500;
+    display: block;
+    background-color: var(--primary);
     color: var(--white);
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    border-radius: 20px;
+}
+.foot-links a {
+    position: relative;
+    color: var(--black);
+    margin-left: 20px;
+}
+.foot-links a::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: -12px;
+    background-color: #343233;
+    width: 2px;
+    height: 14px;
+}
+.foot-links a:first-child::before {
+    width: 0;
+}
+.logos-slider .owl-carousel .item a {
+    background: transparent;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 0;
 }
 
 /* MODAL STYLE */
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: rgba(0,0,0, 0.9);
+}
+.modal {
+    padding-right: 0;
+}
 .modal-content {
     background-color: transparent;
     border: none;
-}
-.modal-body {
-    padding: 0;
-}
-.modal-images p {
-    color: var(--white);
-    font-weight: 600;
-    margin-top: 6px;
 }
 .modal-header {
     padding: 0;
@@ -354,7 +461,19 @@ body {
     top: 15px;
     opacity: 1;
 }
-
+.modal-body {
+    padding: 0;
+}
+.modal-images p {
+    color: var(--white);
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 6px;
+}
+.modal-images {
+    border-bottom: 10px solid var(--white);
+    padding-bottom: 10px;
+}
 
 /* PAYMENT FORM STYLE*/
 .payment-form h3 {
@@ -426,9 +545,6 @@ body {
     .toggle {
         left: 18px;
     }
-    .footer {
-        left: 40%;
-    }
 }
 
 @media (max-width: 576px) {
@@ -462,8 +578,5 @@ body {
     }
     .jobs-links a:nth-child(2) {
         font-size: 16px;
-    }
-    .footer {
-        left: 25%;
     }
 }

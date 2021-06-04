@@ -4,8 +4,33 @@
 <small class="color-red" style="margin-left: 10px;" *ngIf="showReloadMsg">
     Something went wrong. Please <a href="#" (click)="reload($event)">reload</a> this page.
 </small>
-<section class="weekly-deals mt-2 position-relative">
+<section class="weekly-deals mt-3 position-relative">
     <div class="container">
+        <div class="wrapper">
+            <div class="search-input">
+                <a href="" target="_blank" hidden></a>
+
+                <ng-autocomplete
+                    [data]="searchableCategories"
+                    [searchKeyword]="keyword"
+                    (selected)='selectEvent($event)'
+                    (inputChanged)='onChangeSearch($event)'
+                    (inputFocused)='onFocused($event)'
+                    [itemTemplate]="itemTemplate"
+                    [notFoundTemplate]="notFoundTemplate"
+                    placeholder="Search a business Category"
+                >
+                </ng-autocomplete>
+
+                <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                </ng-template>
+
+                <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                </ng-template>
+            </div>
+        </div>
         <h2>Select a weekly deal!</h2>
         <div class="mt-2">
             <owl-carousel-o [options]="customOptions">
