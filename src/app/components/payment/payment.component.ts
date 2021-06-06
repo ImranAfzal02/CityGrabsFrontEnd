@@ -183,7 +183,7 @@ export class PaymentComponent implements OnInit {
                         this.service.savePaymentInformation(body.toString()).subscribe(data => {
                             // if(data.status==200){}
                             const response: any = data;
-                            if (response.status === 200){
+                            if (response.status == 200){
                                 this.notification.showSuccess(response.message, 'Success');
                                 this.ngOnInit();
                                 this.resetForm();

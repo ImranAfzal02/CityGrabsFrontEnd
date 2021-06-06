@@ -93,7 +93,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="modal-images" *ngFor="let img of this.popupImages">
+                <div class="modal-images" [ngClass]="(!first)?'mt-3':''" *ngFor="let img of this.popupImages; let first = first">
                     <img class="img-fluid full-width-img" [src]="imageBaseUrl + '/' + img.image_url" alt="">
                     <p [innerText]="img.description"></p>
                 </div>
