@@ -11,13 +11,16 @@
                 <a href="" target="_blank" hidden></a>
 
                 <ng-autocomplete
+                    #auto
                     [data]="searchableCategories"
                     [searchKeyword]="keyword"
                     (selected)='selectEvent($event)'
                     (inputChanged)='onChangeSearch($event)'
                     (inputFocused)='onFocused($event)'
+                    (inputCleared)='onClear($event)'
                     [itemTemplate]="itemTemplate"
                     [notFoundTemplate]="notFoundTemplate"
+                    [(ngModel)]="this.searchableCategory"
                     placeholder="Search a business Category"
                 >
                 </ng-autocomplete>
@@ -36,12 +39,12 @@
             <owl-carousel-o [options]="customOptions">
                 <ng-container *ngFor="let cat of categories">
                     <ng-template [width]="(cat.name.length*15)<=60?70:(cat.name.length*15)" carouselSlide [id] = "cat.id">
-                        <div  class="item" (click)="filterAddByCategory(cat)">{{ cat.name }}</div>
+                        <div  class="item" (click)="filterAd(cat)">{{ cat.name }}</div>
                     </ng-template>
                 </ng-container>
             </owl-carousel-o>
             <div class="jobs-links mt-1 d-flex align-items-center justify-content-center position-relative">
-                <a href="javascript:;" class="" *ngFor="let cat of prominentCategories" (click)="filterAddByCategory(cat)" [title]="cat.name">{{ cat.name }}</a>
+                <a href="javascript:;" class="" *ngFor="let cat of prominentCategories" (click)="filterAd(cat)" [title]="cat.name">{{ cat.name }}</a>
             </div>
         </div>
     </div>

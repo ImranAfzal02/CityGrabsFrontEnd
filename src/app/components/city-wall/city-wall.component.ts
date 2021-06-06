@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import {GeneralService} from '../../services/general.service';
 import {environment} from '../../../environments/environment';
@@ -12,6 +12,7 @@ import {NotificationService} from '../../services/notification.service';
     styleUrls: ['./city-wall.component.css']
 })
 export class CityWallComponent implements OnInit {
+    @ViewChild('auto') auto: any;
     customOptions: OwlOptions = {
         loop: true,
         margin: 10,
@@ -25,6 +26,7 @@ export class CityWallComponent implements OnInit {
     imageBaseUrl: string;
     keyword: string;
     popUpImage: string;
+    searchableCategory: string;
     categories: any;
     advertisements: any;
     popupImages: any;
@@ -44,6 +46,7 @@ export class CityWallComponent implements OnInit {
     ) {
         this.imageBaseUrl = environment.imageBaseUrl;
         this.popUpImage = '';
+        this.searchableCategory = '';
         this.categories = [];
         this.prominentCategories = [];
         this.searchableCategories = [];
@@ -86,7 +89,12 @@ export class CityWallComponent implements OnInit {
         this.popupImages = popupImages;
     }
 
-    filterAddByCategory = (cat: object) => {
+    filterAd = (cat: object) => {
+        this.resetSearchable();
+        this.filterAdByCategory(cat);
+    }
+
+    filterAdByCategory = (cat: object) => {
         this.category = cat;
         this.showLoader = true;
         // @ts-ignore
@@ -113,8 +121,7 @@ export class CityWallComponent implements OnInit {
     }
 
     selectEvent = (item: object) => {
-        console.log(item);
-        this.filterAddByCategory(item);
+        this.filterAdByCategory(item);
         // do something with selected item
     }
 
@@ -123,8 +130,18 @@ export class CityWallComponent implements OnInit {
         // And reassign the 'data' which is binded to 'data' property.
     }
 
+    onClear = (event: any) => {
+        this.showLoader = true;
+        this.ngOnInit();
+    }
+
     onFocused = (e: any) => {
         e.stopPropagation();
         // do something when input is focused
+    }
+
+    resetSearchable = () => {
+        this.auto.clear();
+        this.auto.close();
     }
 }
