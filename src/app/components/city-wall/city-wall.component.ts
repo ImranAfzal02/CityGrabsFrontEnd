@@ -130,10 +130,6 @@ export class CityWallComponent implements OnInit {
         // And reassign the 'data' which is binded to 'data' property.
     }
 
-    onClear = (event: any) => {
-        this.showLoader = true;
-        this.ngOnInit();
-    }
 
     onFocused = (e: any) => {
         e.stopPropagation();
