@@ -22,21 +22,25 @@ export class CityWallComponent implements OnInit {
         autoWidth: true,
 
     };
-    number: any;
     imageBaseUrl: string;
     keyword: string;
     popUpImage: string;
     searchableCategory: string;
+
+    number: any;
     categories: any;
     advertisements: any;
     popupImages: any;
-
     city: any;
     category: any;
     prominentCategories: any;
     searchableCategories: any;
+    footerLinks: any;
+    shopping: any;
+
     showLoader: boolean;
     showReloadMsg: boolean;
+    showShopping: boolean;
 
     constructor(
         private service: GeneralService,
@@ -52,10 +56,13 @@ export class CityWallComponent implements OnInit {
         this.searchableCategories = [];
         this.advertisements = [];
         this.popupImages = [];
+        this.footerLinks = [];
+        this.shopping = [];
         this.city = {};
         this.category = {};
         this.showLoader = true;
         this.showReloadMsg = false;
+        this.showShopping = false;
         this.number = 200;
         this.keyword = 'name';
     }
@@ -74,6 +81,9 @@ export class CityWallComponent implements OnInit {
                 this.storage.setLocalStorageItem('categories', this.categories);
                 // @ts-ignore
                 this.advertisements = data.data.advertisements;
+                // @ts-ignore
+                this.footerLinks = data.data.footer_links;
+
                 this.showLoader = false;
                 this.showReloadMsg = false;
             }, error => {
@@ -99,6 +109,21 @@ export class CityWallComponent implements OnInit {
         this.showLoader = true;
         // @ts-ignore
         this.service.filterAddsByCategory(this.city.id, this.category.id).subscribe(data => {
+            this.showLoader = false;
+            this.showReloadMsg = false;
+            // @ts-ignore
+            this.advertisements = data.data.advertisements;
+        }, error => {
+            this.showReloadMsg = true;
+            this.showLoader = false;
+            this.notification.showError(error, 'error');
+        });
+    }
+
+    filterAdvertisementByShopping = (shopping: object) => {
+        this.showLoader = true;
+        // @ts-ignore
+        this.service.filterAdsByShopping(this.city.id, shopping.id).subscribe(data => {
             this.showLoader = false;
             this.showReloadMsg = false;
             // @ts-ignore
@@ -139,5 +164,16 @@ export class CityWallComponent implements OnInit {
     resetSearchable = () => {
         this.auto.clear();
         this.auto.close();
+    }
+
+    getShopping = (e: any, link: any) => {
+        e.stopPropagation();
+        this.shopping = link.shopping;
+        console.log(this.shopping);
+        if (this.shopping.length > 0) {
+            this.showShopping = true;
+        } else {
+            this.showShopping = false;
+        }
     }
 }

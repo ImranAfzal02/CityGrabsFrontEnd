@@ -36,6 +36,11 @@ export class GeneralService {
         return this.http.get(url);
     }
 
+    filterAdsByShopping = (cityId: number, shopId: number) => {
+        const url = environment.apiBaseUrl + '/get-city-hall-data-by-shopping/' + cityId + '/' + shopId;
+        return this.http.get(url);
+    }
+
     savePaymentInformation = (obj: any) => {
         const url = environment.apiBaseUrl + '/save-payment-information';
         return this.http.post(url, obj);
