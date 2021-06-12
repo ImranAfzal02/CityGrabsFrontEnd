@@ -21,20 +21,6 @@
     z-index: 9999;
 }
 
-
-
-/*@media (max-width: 576px) {*/
-/*    .jobs-links a:first-child {*/
-/*        font-size: 15px;*/
-/*        font-weight: 100;*/
-/*    }*/
-/*}*/
-
-
-/*.jobs-links a {*/
-/*    font-weight: 100;*/
-/*}*/
-
 @font-face {
     font-family: 'Franklin';
     src: url("../../../assets/font/Franklin-Regular.ttf");
@@ -44,12 +30,4 @@
     font-family: Franklin !important;
 }
 
-/*.jobs-links a:nth-child(2){*/
-/*    color:#000;*/
-/*}*/
-
-
-/*.jobs-links a{*/
-/*color:#000;*/
-/*}*/
 
