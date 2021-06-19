@@ -329,7 +329,7 @@ body {
 
 .jobs-links a {
     display: block;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: #f36523;
     position: relative;
@@ -587,12 +587,6 @@ body {
     }
     .search-logo {
         top: -50px;
-    }
-    .jobs-links a:first-child {
-        font-size: 14px;
-    }
-    .jobs-links a:nth-child(2) {
-        font-size: 16px;
     }
     .foot-links a {
         margin-left: 12px;
