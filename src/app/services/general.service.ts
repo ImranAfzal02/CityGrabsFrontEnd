@@ -32,7 +32,7 @@ export class GeneralService {
     }
 
     filterAddsByCategory = (cityId: number, categoryId: number) => {
-        const url = environment.apiBaseUrl + '/get-city-hall-data/' + cityId + '/' + categoryId;
+        const url = environment.apiBaseUrl + '/get-filtered-city-hall-data/' + cityId + '/' + categoryId;
         return this.http.get(url);
     }
 
@@ -44,5 +44,9 @@ export class GeneralService {
     savePaymentInformation = (obj: any) => {
         const url = environment.apiBaseUrl + '/save-payment-information';
         return this.http.post(url, obj);
+    }
+
+    getCustomUrlData = (url: string) => {
+        return this.http.get(url);
     }
 }

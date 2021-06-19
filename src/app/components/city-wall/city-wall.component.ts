@@ -26,21 +26,27 @@ export class CityWallComponent implements OnInit {
     keyword: string;
     popUpImage: string;
     searchableCategory: string;
+    nextPageUrl: string;
 
     number: any;
     categories: any;
+    category: any;
     advertisements: any;
     popupImages: any;
     city: any;
-    category: any;
     prominentCategories: any;
     searchableCategories: any;
     footerLinks: any;
+    shoppings: any;
     shopping: any;
 
     showLoader: boolean;
     showReloadMsg: boolean;
     showShopping: boolean;
+    showLoadMore: boolean;
+
+    currentPage: number;
+    lastPage: number;
 
     constructor(
         private service: GeneralService,
@@ -48,23 +54,33 @@ export class CityWallComponent implements OnInit {
         private router: Router,
         private notification: NotificationService
     ) {
+
         this.imageBaseUrl = environment.imageBaseUrl;
         this.popUpImage = '';
         this.searchableCategory = '';
+        this.keyword = 'name';
+        this.nextPageUrl = '';
+
         this.categories = [];
         this.prominentCategories = [];
         this.searchableCategories = [];
         this.advertisements = [];
         this.popupImages = [];
         this.footerLinks = [];
+        this.shoppings = [];
         this.shopping = [];
+
         this.city = {};
         this.category = {};
+
         this.showLoader = true;
         this.showReloadMsg = false;
         this.showShopping = false;
+        this.showLoadMore = false;
+
         this.number = 200;
-        this.keyword = 'name';
+        this.currentPage = 0;
+        this.lastPage = 0;
     }
 
     ngOnInit(): void {
@@ -81,6 +97,15 @@ export class CityWallComponent implements OnInit {
                 this.storage.setLocalStorageItem('categories', this.categories);
                 // @ts-ignore
                 this.advertisements = data.data.advertisements;
+                // @ts-ignore
+                this.currentPage = data.data.currentPage;
+                // @ts-ignore
+                this.lastPage = data.data.lastPage;
+                // @ts-ignore
+                this.nextPageUrl = data.data.nextPageUrl;
+                if (this.currentPage < this.lastPage) {
+                    this.showLoadMore = true;
+                }
                 // @ts-ignore
                 this.footerLinks = data.data.footer_links;
 
@@ -101,6 +126,7 @@ export class CityWallComponent implements OnInit {
 
     filterAd = (cat: object) => {
         this.resetSearchable();
+        this.advertisements = [];
         this.filterAdByCategory(cat);
     }
 
@@ -113,6 +139,20 @@ export class CityWallComponent implements OnInit {
             this.showReloadMsg = false;
             // @ts-ignore
             this.advertisements = data.data.advertisements;
+
+            // @ts-ignore
+            this.currentPage = data.data.currentPage;
+            // @ts-ignore
+            this.lastPage = data.data.lastPage;
+            // @ts-ignore
+            this.nextPageUrl = data.data.nextPageUrl;
+
+            if (this.currentPage < this.lastPage) {
+                this.showLoadMore = true;
+            } else {
+                this.showLoadMore = false;
+            }
+
         }, error => {
             this.showReloadMsg = true;
             this.showLoader = false;
@@ -122,12 +162,24 @@ export class CityWallComponent implements OnInit {
 
     filterAdvertisementByShopping = (shopping: object) => {
         this.showLoader = true;
+        this.shopping = shopping;
         // @ts-ignore
         this.service.filterAdsByShopping(this.city.id, shopping.id).subscribe(data => {
             this.showLoader = false;
             this.showReloadMsg = false;
             // @ts-ignore
             this.advertisements = data.data.advertisements;
+
+            // @ts-ignore
+            this.currentPage = data.data.currentPage;
+            // @ts-ignore
+            this.lastPage = data.data.lastPage;
+            // @ts-ignore
+            this.nextPageUrl = data.data.nextPageUrl;
+            if (this.currentPage < this.lastPage) {
+                this.showLoadMore = true;
+            }
+
         }, error => {
             this.showReloadMsg = true;
             this.showLoader = false;
@@ -155,7 +207,6 @@ export class CityWallComponent implements OnInit {
         // And reassign the 'data' which is binded to 'data' property.
     }
 
-
     onFocused = (e: any) => {
         e.stopPropagation();
         // do something when input is focused
@@ -168,12 +219,43 @@ export class CityWallComponent implements OnInit {
 
     getShopping = (e: any, link: any) => {
         e.stopPropagation();
-        this.shopping = link.shopping;
-        console.log(this.shopping);
-        if (this.shopping.length > 0) {
+        this.shoppings = link.shopping;
+        if (this.shoppings.length > 0) {
             this.showShopping = true;
         } else {
             this.showShopping = false;
         }
+    }
+
+    hideShoppings = () => {
+        this.showShopping = false;
+    }
+
+    loadMore = () => {
+        // @ts-ignore
+        this.service.getCustomUrlData(this.nextPageUrl).subscribe(data => {
+            this.showLoader = false;
+            this.showReloadMsg = false;
+            // @ts-ignore
+            this.advertisements = this.advertisements.concat(data.data.advertisements);
+
+            // @ts-ignore
+            this.currentPage = data.data.currentPage;
+            // @ts-ignore
+            this.lastPage = data.data.lastPage;
+            // @ts-ignore
+            this.nextPageUrl = data.data.nextPageUrl;
+
+            if (this.currentPage < this.lastPage) {
+                this.showLoadMore = true;
+            } else {
+                this.showLoadMore = false;
+            }
+
+        }, error => {
+            this.showReloadMsg = true;
+            this.showLoader = false;
+            this.notification.showError(error, 'error');
+        });
     }
 }
