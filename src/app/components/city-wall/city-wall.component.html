@@ -54,6 +54,7 @@
 <div class="deals mt-2">
     <div class="container">
         <div class="deals-img">
+            <p [innerText]="selectedName" class="color-red"></p>
             <ng-template ngFor let-advertisement [ngForOf]="advertisements">
                 <div class="deals-img-icons position-relative">
                     <div class="img-icons d-flex align-items-center">

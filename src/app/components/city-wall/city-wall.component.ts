@@ -27,6 +27,7 @@ export class CityWallComponent implements OnInit {
     popUpImage: string;
     searchableCategory: string;
     nextPageUrl: string;
+    selectedName: string;
 
     number: any;
     categories: any;
@@ -56,10 +57,12 @@ export class CityWallComponent implements OnInit {
     ) {
 
         this.imageBaseUrl = environment.imageBaseUrl;
+
+        this.keyword = 'name';
         this.popUpImage = '';
         this.searchableCategory = '';
-        this.keyword = 'name';
         this.nextPageUrl = '';
+        this.selectedName = '';
 
         this.categories = [];
         this.prominentCategories = [];
@@ -132,6 +135,7 @@ export class CityWallComponent implements OnInit {
 
     filterAdByCategory = (cat: object) => {
         this.category = cat;
+        this.selectedName = this.category.name;
         this.showLoader = true;
         // @ts-ignore
         this.service.filterAddsByCategory(this.city.id, this.category.id).subscribe(data => {
