@@ -188,6 +188,7 @@ export class CityWallComponent implements OnInit {
     }
 
     initiateCall = (advertisement: any) => {
+        console.log(advertisement.phone);
         // @ts-ignore
         window.location = 'tel:' + advertisement.phone;
     }

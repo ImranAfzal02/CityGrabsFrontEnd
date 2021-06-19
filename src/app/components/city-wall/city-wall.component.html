@@ -70,6 +70,7 @@
                     </div>
                 </div>
                 <img class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image" alt=" ">
+                <p [innerText]="advertisement.description"></p>
                 <hr class="dropdown-divider">
             </ng-template>
             <div *ngIf="advertisements.length == 0 && !showLoader">
@@ -120,6 +121,15 @@
             </div>
             <div class="modal-body">
                 <div class="modal-images" [ngClass]="(!first)?'mt-3':''" *ngFor="let img of this.popupImages; let first = first">
+                    <div class="deals-img-icons position-relative" [hidden]="!img.phone">
+                        <div class="img-icons d-flex align-items-center">
+                            <div class="svg-icon" (click)="initiateCall(img)">
+                                <svg class="icon icon-telephone" width="14" height="14">
+                                    <use href="assets/images/sprite.svg#telephone"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
                     <img class="img-fluid full-width-img" [src]="imageBaseUrl + '/' + img.image_url" alt="">
                     <p [innerText]="img.description"></p>
                 </div>
