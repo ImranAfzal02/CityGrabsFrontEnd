@@ -233,6 +233,7 @@ export class CityWallComponent implements OnInit {
 
     loadMore = () => {
         // @ts-ignore
+        this.showLoader = true;
         this.service.getCustomUrlData(this.nextPageUrl).subscribe(data => {
             this.showLoader = false;
             this.showReloadMsg = false;

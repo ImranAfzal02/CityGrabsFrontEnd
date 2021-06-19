@@ -432,7 +432,7 @@ body {
     left: -12px;
     background-color: #343233;
     width: 2px;
-    height: 14px;
+    height: 7px;
 }
 .foot-links a:first-child::before {
     width: 0;
@@ -592,6 +592,6 @@ body {
         margin-left: 12px;
     }
     .foot-links a::before {
-        left: -9px;
+        left: -7px;
     }
 }
