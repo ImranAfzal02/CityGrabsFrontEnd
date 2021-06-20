@@ -59,6 +59,20 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+.loaderSpinner {
+    position: absolute;
+    left: 50%;
+    top: 43%;
+    z-index: 9999;
+}
+
+.validation-error {
+    color: red;
+    margin-top: 5px;
+    font-size: 14px;
+    text-align: left;
+}
+
 .main-content::before, .main-content::after {
     content: "";
     position: absolute;
@@ -143,6 +157,9 @@ body {
 
 /* INDEX PAGE STYLE */
 /* NAVBAR STYLE */
+.navbar-dark {
+    background-color: #000000;
+}
 .navbar {
     background-color: var(--primary);
 }

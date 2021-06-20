@@ -1,0 +1,141 @@
+<!-- NAVBAR -->
+<nav class = "navbar-dark p-4">
+    <div class = "container">
+        <div class = "text-center">
+            <img src = "assets/images/logo.png" class = "mx-auto d-block logo-image" alt = "">
+            <h3 class = "text-white">Order Request Form</h3>
+        </div>
+    </div>
+</nav>
+<!-- END NAVBAR -->
+
+<i class = "fa fa-2x fa-spinner fa-spin loaderSpinner" *ngIf = "showLoader"></i>
+<!-- SLIDER -->
+<small class = "color-red" style = "margin-left: 10px;" *ngIf = "showReloadMsg">
+    Something went wrong. Please <a href = "#" (click) = "reload($event)">reload</a> this page.
+</small>
+
+<div class = "container pt-sm-2 pt-md-3">
+    <form #f = "ngForm" (ngSubmit) = "f.form.valid  && submitRequest()" class = "mt-4" enctype = "multipart/form-data" novalidate = "novalidate">
+        <div class = "row">
+            <div class = "col-md-4">
+                <div class = "form-group">
+                    <label>Select Your City</label>
+                    <select
+                        name = "city"
+                        class = "form-control"
+                        [(ngModel)] = "cityId"
+                        required
+                    >
+                        <option value = ""></option>
+                        <option [value] = "city.id" *ngFor = "let city of cities">{{ city.name }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class = "col-md-4">
+                <div class = "form-group">
+                    <label>Search the Category (s) <b>5 Max</b></label>
+                    <ng-multiselect-dropdown
+                        name = "multiselect"
+                        [placeholder] = "''"
+                        [settings] = "dropdownSettings"
+                        [data] = "categories"
+                        [(ngModel)] = "selectedItems"
+                        (onSelect) = "onItemSelect($event)"
+                        (onSelectAll) = "onSelectAll($event)"
+                    >
+                    </ng-multiselect-dropdown>
+                </div>
+            </div>
+            <div class = "col-md-4">
+                <div class = "form-group">
+                    <label>Upload Your Logo</label>
+                    <input type = "file"
+                           id = "file"
+                           class = "form-control"
+                           (change) = "handleFileInput($event)"
+                           required>
+                </div>
+            </div>
+        </div>
+        <div class = "row">
+            <div class = "col-md-4">
+                <label>Enter your payment card number</label>
+                <input
+                    type = "text"
+                    class = "form-control"
+                    name = "card_number"
+                    maxlength="14"
+                    pattern="[0-9]+"
+                    [(ngModel)] = "cardNumber"
+                    #cardNum="ngModel"
+                    required
+                >
+                <div *ngIf="cardNum.invalid && (cardNum.dirty || cardNum.touched)"
+                     class="validation-error">
+                    <div *ngIf="cardNum.errors?.required">
+                        Please enter your payment card number
+                    </div>
+                    <div *ngIf="cardNum.errors?.pattern">
+                        Payment card number can only be numeric
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label>Enter your Business name</label>
+                <input
+                    type = "text"
+                    class="form-control"
+                    name="business_name"
+                    maxlength="100"
+                    [(ngModel)]="businessName"
+                    #bname="ngModel"
+                    required
+                >
+                <div *ngIf="bname.invalid && (bname.dirty || bname.touched)"
+                     class="validation-error">
+                    <div *ngIf="bname.errors?.required">
+                        Please enter your business name
+                    </div>
+                    <div *ngIf="bname.errors?.maxlength">
+                        Business name can only contain 100 character
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label>Enter your email</label>
+                <input
+                    type = "email"
+                    class="form-control"
+                    name="email"
+                    maxlength="150"
+                    [(ngModel)]="email"
+                    #mail="ngModel"
+                    email
+                    required
+                >
+                <div *ngIf="mail.invalid && (mail.dirty || mail.touched)"
+                     class="validation-error">
+                    <div *ngIf="mail.errors?.required">
+                        Please enter your email
+                    </div>
+                    <div *ngIf="bname.errors?.email">
+                        Please enter a valid email
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "row">
+            <div class = "offset-md-4 col-md-4">
+                <div class = "form-group">
+                    <button type = "submit"
+                            class = "btn btn-lg btn-primary btn-block mt-3"
+                            title = "Submit Order"
+                            (click)="validateForm(f.form)"
+                            [disabled] = "showLoader">Submit Order <i class = "fa fa-spinner fa-spin" *ngIf = "showLoader"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

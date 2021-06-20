@@ -46,6 +46,16 @@ export class GeneralService {
         return this.http.post(url, obj);
     }
 
+    getRequestFormInitialData = () => {
+        const url = environment.apiBaseUrl + '/get-cities-and-categories';
+        return this.http.get(url);
+    }
+
+    submitRequestForm = (obj: any) => {
+        const url = environment.apiBaseUrl + '/save-request-form';
+        return this.http.post(url, obj);
+    }
+
     getCustomUrlData = (url: string) => {
         return this.http.get(url);
     }

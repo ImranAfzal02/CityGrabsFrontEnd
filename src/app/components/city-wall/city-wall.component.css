@@ -14,12 +14,7 @@
     color: red;
 }
 
-.loaderSpinner {
-    position: absolute;
-    left: 50%;
-    top: 43%;
-    z-index: 9999;
-}
+
 
 .red-background{
     background: red;
