@@ -9,5 +9,5 @@ export const environment = {
     STRIPE_KEY: 'pk_live_iazwg9PZBRbqnQ3kzMkptf7w',
     STRIPE_SECRET: 'sk_live_ufH96tsuhAitNGR5RvqKCZAk',
 
-    adminUrl: 'https://www.citygrabs.com/api/public'
+    adminUrl: 'https://www.citygrabs.com/api/public/login'
 };
