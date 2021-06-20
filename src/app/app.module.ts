@@ -3,20 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {AutocompleteLibModule} from 'angular-ng-autocomplete';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {HttpInterceptorClass} from './interceptors/http-interceptor';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpInterceptorClass } from './interceptors/http-interceptor';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { CityWallComponent } from './components/city-wall/city-wall.component';
-import {RouterModule} from '@angular/router';
-import {CarouselModule} from 'ngx-owl-carousel-o';
+import { RouterModule } from '@angular/router';
+import {CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { PaymentComponent } from './components/payment/payment.component';
-import {FormsModule} from '@angular/forms';
-import {IConfig, NgxMaskModule} from 'ngx-mask';
-import {ToastrModule} from 'ngx-toastr';
-import {NgbDatepicker, NgbDatepickerModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { IConfig, NgxMaskModule } from 'ngx-mask';
+import { ToastrModule } from 'ngx-toastr';
+import { NgbDatepicker, NgbDatepickerModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RequestFormComponent } from './components/request-form/request-form.component';
+import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -31,6 +33,7 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         CityWallComponent,
         HeaderComponent,
         PaymentComponent,
+        RequestFormComponent,
     ],
     imports: [
         BrowserModule,
@@ -47,7 +50,8 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         }),
         NgxMaskModule,
         NgbModule,
-        NgbDatepickerModule
+        NgbDatepickerModule,
+        NgMultiSelectDropDownModule.forRoot()
     ],
     providers: [
         {
