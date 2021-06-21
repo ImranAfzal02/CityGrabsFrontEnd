@@ -98,17 +98,10 @@ export class CityWallComponent implements OnInit {
                 // @ts-ignore
                 this.searchableCategories = data.data.searchable_categories;
                 this.storage.setLocalStorageItem('categories', this.categories);
+
                 // @ts-ignore
-                this.advertisements = data.data.advertisements;
-                // @ts-ignore
-                this.currentPage = data.data.currentPage;
-                // @ts-ignore
-                this.lastPage = data.data.lastPage;
-                // @ts-ignore
-                this.nextPageUrl = data.data.nextPageUrl;
-                if (this.currentPage < this.lastPage) {
-                    this.showLoadMore = true;
-                }
+                this.setAdvertisementData(data.data);
+
                 // @ts-ignore
                 this.footerLinks = data.data.footer_links;
 
@@ -141,21 +134,9 @@ export class CityWallComponent implements OnInit {
         this.service.filterAddsByCategory(this.city.id, this.category.id).subscribe(data => {
             this.showLoader = false;
             this.showReloadMsg = false;
-            // @ts-ignore
-            this.advertisements = data.data.advertisements;
 
             // @ts-ignore
-            this.currentPage = data.data.currentPage;
-            // @ts-ignore
-            this.lastPage = data.data.lastPage;
-            // @ts-ignore
-            this.nextPageUrl = data.data.nextPageUrl;
-
-            if (this.currentPage < this.lastPage) {
-                this.showLoadMore = true;
-            } else {
-                this.showLoadMore = false;
-            }
+            this.setAdvertisementData(data.data);
 
         }, error => {
             this.showReloadMsg = true;
@@ -167,28 +148,36 @@ export class CityWallComponent implements OnInit {
     filterAdvertisementByShopping = (shopping: object) => {
         this.showLoader = true;
         this.shopping = shopping;
+        this.selectedName = this.shopping.title;
         // @ts-ignore
         this.service.filterAdsByShopping(this.city.id, shopping.id).subscribe(data => {
             this.showLoader = false;
             this.showReloadMsg = false;
             // @ts-ignore
-            this.advertisements = data.data.advertisements;
-
-            // @ts-ignore
-            this.currentPage = data.data.currentPage;
-            // @ts-ignore
-            this.lastPage = data.data.lastPage;
-            // @ts-ignore
-            this.nextPageUrl = data.data.nextPageUrl;
-            if (this.currentPage < this.lastPage) {
-                this.showLoadMore = true;
-            }
+            this.setAdvertisementData(data.data);
 
         }, error => {
             this.showReloadMsg = true;
             this.showLoader = false;
+            this.showLoadMore = false;
             this.notification.showError(error, 'error');
         });
+    }
+
+    setAdvertisementData = (data: any) => {
+        this.advertisements = data.advertisements;
+
+        // @ts-ignore
+        this.currentPage = data.currentPage;
+        // @ts-ignore
+        this.lastPage = data.lastPage;
+        // @ts-ignore
+        this.nextPageUrl = data.nextPageUrl;
+        if (this.currentPage < this.lastPage) {
+            this.showLoadMore = true;
+        } else {
+            this.showLoadMore = false;
+        }
     }
 
     initiateCall = (advertisement: any) => {

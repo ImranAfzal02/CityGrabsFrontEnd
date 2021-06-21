@@ -54,7 +54,7 @@
 <div class="deals mt-2">
     <div class="container">
         <div class="deals-img">
-            <p [innerText]="selectedName" class="color-red"></p>
+            <p [innerText]="selectedName" class="color-red font-weight-bold"></p>
             <ng-template ngFor let-advertisement [ngForOf]="advertisements">
                 <div class="deals-img-icons position-relative">
                     <div class="img-icons d-flex align-items-center">
@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <img class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image" alt=" ">
-                <p [innerText]="advertisement.description"></p>
+                <p class="main-description" [innerText]="advertisement.description"></p>
                 <hr class="dropdown-divider">
             </ng-template>
             <div *ngIf="advertisements.length == 0 && !showLoader">

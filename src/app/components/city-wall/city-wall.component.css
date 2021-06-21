@@ -1,3 +1,12 @@
+.deals-img {
+    padding-bottom: 90px !important;
+}
+
+.main-description {
+    font-family: Arial !important;
+    font-size:  15px !important;
+}
+
 #popupImageModal .modal-body{
     width: 100%;
 }
@@ -13,8 +22,6 @@
 .color-red {
     color: red;
 }
-
-
 
 .red-background{
     background: red;

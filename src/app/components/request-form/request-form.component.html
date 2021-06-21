@@ -119,7 +119,7 @@
                     <div *ngIf="mail.errors?.required">
                         Please enter your email
                     </div>
-                    <div *ngIf="bname.errors?.email">
+                    <div *ngIf="mail.errors?.email">
                         Please enter a valid email
                     </div>
                 </div>
@@ -132,7 +132,7 @@
                             class = "btn btn-lg btn-primary btn-block mt-3"
                             title = "Submit Order"
                             (click)="validateForm(f.form)"
-                            [disabled] = "showLoader">Submit Order <i class = "fa fa-spinner fa-spin" *ngIf = "showLoader"></i>
+                            >Submit Order <i class = "fa fa-spinner fa-spin" *ngIf = "showLoader"></i>
                     </button>
                 </div>
             </div>

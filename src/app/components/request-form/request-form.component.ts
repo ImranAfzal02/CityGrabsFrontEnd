@@ -70,7 +70,6 @@ export class RequestFormComponent implements OnInit {
             this.showReloadMsg = false;
         }, error => {
             this.showLoader = false;
-            this.showReloadMsg = true;
         });
     }
 
@@ -99,6 +98,7 @@ export class RequestFormComponent implements OnInit {
     }
 
     submitRequest = () => {
+        this.showLoader = true;
         const formData: FormData = new FormData();
         // @ts-ignore
         formData.append('cityId', this.cityId.toString());
@@ -109,6 +109,13 @@ export class RequestFormComponent implements OnInit {
         formData.append('businessName', this.businessName);
         formData.append('email', this.email);
         formData.append('logo', this.logo);
+
+        this.service.submitRequestForm(formData).subscribe(data => {
+            this.showLoader = false;
+        }, error => {
+            this.showLoader = false;
+            this.notification.showError(error, 'error');
+        });
     }
 
 }
