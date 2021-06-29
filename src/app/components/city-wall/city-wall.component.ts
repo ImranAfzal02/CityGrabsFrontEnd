@@ -105,6 +105,9 @@ export class CityWallComponent implements OnInit {
                 // @ts-ignore
                 this.footerLinks = data.data.footer_links;
 
+                // @ts-ignore
+                this.selectedName = data.data.city_wall_category.name;
+
                 this.showLoader = false;
                 this.showReloadMsg = false;
             }, error => {
@@ -252,5 +255,15 @@ export class CityWallComponent implements OnInit {
             this.showLoader = false;
             this.notification.showError(error, 'error');
         });
+    }
+
+    // @ts-ignore
+    openLink(link){
+
+        if (link && link.indexOf("http") === -1) {
+            link = `//${link}`;
+        }
+
+        window.open( link, '_blank');
     }
 }

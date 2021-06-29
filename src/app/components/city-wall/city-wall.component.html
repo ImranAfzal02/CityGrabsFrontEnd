@@ -68,6 +68,15 @@
                                 <use href="assets/images/sprite.svg#speaker"></use>
                             </svg>
                         </div>
+
+                        <div class="svg-icon" [hidden]="!advertisement.website" data-bs-toggle="modal"  (click)="openLink(advertisement.website)">
+                            <img src="assets/images/internet_new.svg" alt="blabla_is_working" >
+                        </div>
+
+                        <div class="svg-icon" [hidden]="!advertisement.gps_link" data-bs-toggle="modal"  (click)="openLink(advertisement.gps_link)">
+
+                            <img src="assets/images/pin.svg" alt="blabla_is_working" style="width: 50%;">
+                        </div>
                     </div>
                 </div>
                 <img class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image" alt=" ">
