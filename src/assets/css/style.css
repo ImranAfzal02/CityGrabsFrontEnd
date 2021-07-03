@@ -369,26 +369,29 @@ body {
 .jobs-links a:first-child::before {
     width: 0;
 }
-
-.deals-img img {
-    /*box-shadow: 0 30px 30px 0 rgb(0 0 0 / 20%), 0 -6px 30px 0 rgb(0 0 0 / 10%);*/
-    border-radius: 5px;
+.banks strong {
+    color: #f36523;
 }
-.deals-img-icons .img-icons {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+.banks-img img {
+    max-width: 120px;
 }
-.deals-img-icons .svg-icon {
+.banks-content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 10px;
+    color: var(--black);
+}
+.contact-icons .svg-icon {
     background-color: var(--white);
-    width: 34px;
-    height: 34px;
-    line-height: 34px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
     text-align: center;
     border-radius: 50%;
     margin-left: 10px;
-    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    box-shadow: 0 19px 38px rgba(0,0,0,0.10), 0 15px 12px rgba(0,0,0,0.10);
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .dropdown-divider {
@@ -407,7 +410,7 @@ body {
     width: 100%;
     height: auto;
     background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgb(255 255 255) 35%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7343312324929971) 35%, rgba(255,255,255,1) 100%);
     padding-bottom: 0;
     left: 0;
     z-index: 999;
@@ -605,10 +608,16 @@ body {
     .search-logo {
         top: -50px;
     }
+    .jobs-links a:first-child {
+        font-size: 14px;
+    }
+    .jobs-links a:nth-child(2) {
+        font-size: 16px;
+    }
     .foot-links a {
         margin-left: 12px;
     }
     .foot-links a::before {
-        left: -7px;
+        left: -9px;
     }
 }

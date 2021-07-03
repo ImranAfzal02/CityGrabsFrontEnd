@@ -56,31 +56,38 @@
         <div class="deals-img">
             <p [innerText]="selectedName" class="color-red font-weight-bold"></p>
             <ng-template ngFor let-advertisement [ngForOf]="advertisements">
-                <div class="deals-img-icons position-relative">
-                    <div class="img-icons d-flex align-items-center">
-                        <div class="svg-icon" [hidden]="!advertisement.phone" (click)="initiateCall(advertisement)">
-                            <svg class="icon icon-telephone" width="14" height="14">
-                                <use href="assets/images/sprite.svg#telephone"></use>
-                            </svg>
-                        </div>
-                        <div class="svg-icon" [hidden]="advertisement.popupImages.length === 0" data-bs-toggle="modal" data-bs-target="#popupImageModal" (click)="setPopUpImage(advertisement.popupImages)">
-                            <svg class="icon icon-speaker" width="14" height="14">
-                                <use href="assets/images/sprite.svg#speaker"></use>
-                            </svg>
-                        </div>
+                <div class="banks-meta d-flex mt-3">
+                    <div class="banks-img">
+                        <img class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image" alt=" ">
+                    </div>
+                    <div class="banks-content">
+                        <h2>{{ advertisement.title }}</h2>
+                        <div class="contact-icons d-flex">
+                            <div class="svg-icon" [hidden]="!advertisement.phone" (click)="initiateCall(advertisement)">
+                                <svg class="icon icon-telephone" width="14" height="14">
+                                    <use href="assets/images/sprite.svg#telephone"></use>
+                                </svg>
+                            </div>
+                            <div class="svg-icon" [hidden]="advertisement.popupImages.length === 0" data-bs-toggle="modal" data-bs-target="#popupImageModal" (click)="setPopUpImage(advertisement.popupImages)">
+                                <svg class="icon icon-speaker" width="14" height="14">
+                                    <use href="assets/images/sprite.svg#speaker"></use>
+                                </svg>
+                            </div>
 
-                        <div class="svg-icon" [hidden]="!advertisement.website" data-bs-toggle="modal"  (click)="openLink(advertisement.website)">
-                            <img src="assets/images/internet_new.svg" alt="blabla_is_working" >
-                        </div>
+                            <div class="svg-icon" [hidden]="!advertisement.website" data-bs-toggle="modal"  (click)="openLink(advertisement.website)">
+                                <img src="assets/images/internet_new.svg" alt="blabla_is_working" >
+                            </div>
 
-                        <div class="svg-icon" [hidden]="!advertisement.gps_link" data-bs-toggle="modal"  (click)="openLink(advertisement.gps_link)">
+                            <div class="svg-icon" [hidden]="!advertisement.gps_link" data-bs-toggle="modal"  (click)="openLink(advertisement.gps_link)">
 
-                            <img src="assets/images/pin.svg" alt="blabla_is_working" style="width: 50%;">
+                                <img src="assets/images/pin.svg" alt="blabla_is_working" style="width: 50%;">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <img class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image" alt=" ">
-                <p class="main-description" [innerText]="advertisement.description"></p>
+                <div class="text-para mt-3">
+                    <p class="main-description" [innerText]="advertisement.description"></p>
+                </div>
                 <hr class="dropdown-divider">
             </ng-template>
             <div *ngIf="advertisements.length == 0 && !showLoader">
