@@ -376,7 +376,7 @@ body {
     max-width: 120px;
 }
 .banks-content h2 {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
     margin-left: 10px;
     color: var(--black);
@@ -390,6 +390,8 @@ body {
     border-radius: 50%;
     margin-left: 10px;
     box-shadow: 0 19px 38px rgba(0,0,0,0.10), 0 15px 12px rgba(0,0,0,0.10);
+    /*box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);*/
+    border: 1px solid #ccc;
     cursor: pointer;
     margin-top: 10px;
 }
