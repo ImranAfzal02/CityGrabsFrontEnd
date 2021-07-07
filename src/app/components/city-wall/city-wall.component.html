@@ -138,13 +138,22 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="modal-images" [ngClass]="(!first)?'mt-3':''" *ngFor="let img of this.popupImages; let first = first">
-                    <div class="deals-img-icons position-relative" [hidden]="!img.phone">
-                        <div class="img-icons d-flex align-items-center">
-                            <div class="svg-icon" (click)="initiateCall(img)">
+                <div class="modal-images" *ngFor="let img of this.popupImages; let first = first">
+                    <div class="deals-img-icons position-relative">
+                        <div class="contact-icons d-flex align-items-center">
+
+                            <div class="svg-icon" (click)="initiateCall(img)" [hidden]="!img.phone">
                                 <svg class="icon icon-telephone" width="14" height="14">
                                     <use href="assets/images/sprite.svg#telephone"></use>
                                 </svg>
+                            </div>
+
+                            <div class="svg-icon" [hidden]="!img.website" data-bs-toggle="modal"  (click)="openLink(img.website)">
+                                <img src="assets/images/internet_new.svg" alt="blabla_is_working" >
+                            </div>
+
+                            <div class="svg-icon" [hidden]="!img.gps_link" data-bs-toggle="modal"  (click)="openLink(img.gps_link)">
+                                <img src="assets/images/pin.svg" alt="blabla_is_working" style="width: 50%;">
                             </div>
                         </div>
                     </div>
