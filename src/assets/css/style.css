@@ -395,9 +395,10 @@ body {
 }
 
 .dropdown-divider {
-    height: 2px!important;
+    height: 1px!important;
     margin: 20px 0;
-    border-top: 1px solid black;
+    border: 0px;
+    color:lightgrey;
 }
 .copyright {
     margin-top: 80px;
@@ -573,6 +574,15 @@ body {
     margin-left: 0;
 }
 
+
+.advertisement-title {
+    display: inline-block;
+    width: 180px;
+    font-size: 14px !important;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
 
 /* MEDIA QUERIES */
 
