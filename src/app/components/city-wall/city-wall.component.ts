@@ -170,17 +170,17 @@ export class CityWallComponent implements OnInit {
     setAdvertisementData = (data: any) => {
         this.advertisements = data.advertisements;
 
-        // @ts-ignore
-        this.currentPage = data.currentPage;
-        // @ts-ignore
-        this.lastPage = data.lastPage;
-        // @ts-ignore
-        this.nextPageUrl = data.nextPageUrl;
-        if (this.currentPage < this.lastPage) {
-            this.showLoadMore = true;
-        } else {
-            this.showLoadMore = false;
-        }
+        // // @ts-ignore
+        // this.currentPage = data.currentPage;
+        // // @ts-ignore
+        // this.lastPage = data.lastPage;
+        // // @ts-ignore
+        // this.nextPageUrl = data.nextPageUrl;
+        // if (this.currentPage < this.lastPage) {
+        //     this.showLoadMore = true;
+        // } else {
+        //     this.showLoadMore = false;
+        // }
     }
 
     initiateCall = (advertisement: any) => {
