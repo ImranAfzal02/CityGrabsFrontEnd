@@ -55,10 +55,14 @@
     <div class="container">
         <div class="deals-img">
             <p [innerText]="selectedName" class="color-red font-weight-bold"></p>
-            <ng-template ngFor let-advertisement [ngForOf]="advertisements">
+
+            <div *ngFor="let advertisement of advertisements; let i = index">
                 <div class="banks-meta d-flex mt-3">
                     <div class="banks-img">
-                        <img class="img-fluid" [src]="imageBaseUrl + '/' + advertisement.main_image" alt=" ">
+                        <div *ngIf="loading[i]" style="width: 120px; height: 120px; text-align: center;">
+                            <i class="fa fa-2x fa-spinner fa-spin"></i>
+                        </div>
+                        <img class="img-fluid" [hidden]="loading[i]" (load)="onLoad(i)" [src]="imageBaseUrl + '/' + advertisement.main_image" alt=" ">
                     </div>
                     <div class="banks-content">
                         <h2 class="advertisement-title">{{ advertisement.title }}</h2>
@@ -90,7 +94,7 @@
                     <p class="main-description" [innerText]="advertisement.description"></p>
                 </div>
                 <hr class="dropdown-divider">
-            </ng-template>
+            </div>
             <div *ngIf="advertisements.length == 0 && !showLoader">
                 No advertisement found
             </div>

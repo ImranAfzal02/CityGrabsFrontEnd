@@ -49,6 +49,8 @@ export class CityWallComponent implements OnInit {
     currentPage: number;
     lastPage: number;
 
+    loading: boolean[];
+
     constructor(
         private service: GeneralService,
         private storage: LocalStorageService,
@@ -80,6 +82,8 @@ export class CityWallComponent implements OnInit {
         this.showReloadMsg = false;
         this.showShopping = false;
         this.showLoadMore = false;
+
+        this.loading = [];
 
         this.number = 200;
         this.currentPage = 0;
@@ -170,6 +174,10 @@ export class CityWallComponent implements OnInit {
     setAdvertisementData = (data: any) => {
         this.advertisements = data.advertisements;
 
+        for (let i = 0; i <= this.advertisements.length; i++) {
+            this.loading[i] = true;
+        }
+
         // // @ts-ignore
         // this.currentPage = data.currentPage;
         // // @ts-ignore
@@ -258,12 +266,16 @@ export class CityWallComponent implements OnInit {
     }
 
     // @ts-ignore
-    openLink(link){
+    openLink = (link) => {
 
-        if (link && link.indexOf("http") === -1) {
+        if (link && link.indexOf('http') === -1) {
             link = `//${link}`;
         }
 
         window.open( link, '_blank');
+    }
+
+    onLoad = (i: number) => {
+        this.loading[i] = false;
     }
 }
