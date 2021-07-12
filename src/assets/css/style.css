@@ -393,7 +393,7 @@ body {
     /*box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);*/
     border: 1px solid #ccc;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .dropdown-divider {
@@ -620,12 +620,10 @@ body {
     .search-logo {
         top: -50px;
     }
-    .jobs-links a:first-child {
+    .jobs-links a {
         font-size: 14px;
     }
-    .jobs-links a:nth-child(2) {
-        font-size: 16px;
-    }
+
     .foot-links a {
         margin-left: 12px;
     }
