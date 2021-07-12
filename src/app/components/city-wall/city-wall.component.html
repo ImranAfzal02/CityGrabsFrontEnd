@@ -62,7 +62,7 @@
                         <div *ngIf="loading[i]" style="width: 120px; height: 120px; text-align: center;">
                             <i class="fa fa-2x fa-spinner fa-spin"></i>
                         </div>
-                        <img class="img-fluid" [hidden]="loading[i]" (load)="onLoad(i)" [src]="imageBaseUrl + '/' + advertisement.main_image" alt=" ">
+                        <img class="img-fluid" [hidden]="loading[i]" (load)="onLoad(i, 'main')" [src]="imageBaseUrl + '/' + advertisement.main_image" alt=" ">
                     </div>
                     <div class="banks-content">
                         <h2 class="advertisement-title">{{ advertisement.title }}</h2>
@@ -142,28 +142,65 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="modal-images" *ngFor="let img of this.popupImages; let first = first">
-                    <div class="deals-img-icons position-relative">
-                        <div class="contact-icons d-flex align-items-center">
 
-                            <div class="svg-icon" (click)="initiateCall(img)" [hidden]="!img.phone">
-                                <svg class="icon icon-telephone" width="14" height="14">
-                                    <use href="assets/images/sprite.svg#telephone"></use>
-                                </svg>
+
+                <div *ngFor="let img of this.popupImages; let first = first; let i = index">
+                    <div class="banks-meta d-flex mt-3">
+                        <div class="banks-img">
+                            <div *ngIf="popupImageLoading[i]" style="width: 120px; height: 120px; text-align: center;">
+                                <i class="fa fa-2x fa-spinner fa-spin"></i>
                             </div>
+                            <img class="img-fluid" [hidden]="popupImageLoading[i]" (load)="onLoad(i, 'popup')" [src]="imageBaseUrl + '/' + img.image_url" alt=" ">
+                        </div>
+                        <div class="banks-content">
+                            <h2 class="advertisement-title">{{ img.title }}</h2>
+                            <p class="ml-2" [hidden]="!img.address"><small>{{ img.address }}</small></p>
+                            <div class="contact-icons d-flex">
+                                <div class="svg-icon" [hidden]="!img.phone" (click)="initiateCall(img)">
+                                    <svg class="icon icon-telephone" width="14" height="14">
+                                        <use href="assets/images/sprite.svg#telephone"></use>
+                                    </svg>
+                                </div>
 
-                            <div class="svg-icon" [hidden]="!img.website" data-bs-toggle="modal"  (click)="openLink(img.website)">
-                                <img src="assets/images/internet_new.svg" alt="blabla_is_working" >
-                            </div>
+                                <div class="svg-icon" [hidden]="!img.website" data-bs-toggle="modal"  (click)="openLink(img.website)">
+                                    <img src="assets/images/internet_new.svg" alt="blabla_is_working" >
+                                </div>
 
-                            <div class="svg-icon" [hidden]="!img.gps_link" data-bs-toggle="modal"  (click)="openLink(img.gps_link)">
-                                <img src="assets/images/pin.svg" alt="blabla_is_working" style="width: 50%;">
+                                <div class="svg-icon" [hidden]="!img.gps_link" data-bs-toggle="modal"  (click)="openLink(img.gps_link)">
+
+                                    <img src="assets/images/pin.svg" alt="blabla_is_working" style="width: 50%;">
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <img class="img-fluid full-width-img" [src]="imageBaseUrl + '/' + img.image_url" alt="">
-                    <p [innerText]="img.description"></p>
+                    <div class="text-para mt-3">
+                        <p class="main-description" [innerText]="img.description"></p>
+                    </div>
+                    <hr class="dropdown-divider">
                 </div>
+
+<!--                <div class="modal-images" *ngFor="let img of this.popupImages; let first = first">-->
+<!--                    <div class="deals-img-icons position-relative">-->
+<!--                        <div class="contact-icons d-flex align-items-center">-->
+
+<!--                            <div class="svg-icon" (click)="initiateCall(img)" [hidden]="!img.phone">-->
+<!--                                <svg class="icon icon-telephone" width="14" height="14">-->
+<!--                                    <use href="assets/images/sprite.svg#telephone"></use>-->
+<!--                                </svg>-->
+<!--                            </div>-->
+
+<!--                            <div class="svg-icon" [hidden]="!img.website" data-bs-toggle="modal"  (click)="openLink(img.website)">-->
+<!--                                <img src="assets/images/internet_new.svg" alt="blabla_is_working" >-->
+<!--                            </div>-->
+
+<!--                            <div class="svg-icon" [hidden]="!img.gps_link" data-bs-toggle="modal"  (click)="openLink(img.gps_link)">-->
+<!--                                <img src="assets/images/pin.svg" alt="blabla_is_working" style="width: 50%;">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <img class="img-fluid full-width-img" [src]="imageBaseUrl + '/' + img.image_url" alt="">-->
+<!--                    <p [innerText]="img.description"></p>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

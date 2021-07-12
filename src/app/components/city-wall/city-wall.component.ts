@@ -50,6 +50,7 @@ export class CityWallComponent implements OnInit {
     lastPage: number;
 
     loading: boolean[];
+    popupImageLoading: boolean[];
 
     constructor(
         private service: GeneralService,
@@ -74,6 +75,8 @@ export class CityWallComponent implements OnInit {
         this.footerLinks = [];
         this.shoppings = [];
         this.shopping = [];
+        this.loading = [];
+        this.popupImageLoading = [];
 
         this.city = {};
         this.category = {};
@@ -82,8 +85,6 @@ export class CityWallComponent implements OnInit {
         this.showReloadMsg = false;
         this.showShopping = false;
         this.showLoadMore = false;
-
-        this.loading = [];
 
         this.number = 200;
         this.currentPage = 0;
@@ -125,6 +126,10 @@ export class CityWallComponent implements OnInit {
     }
     setPopUpImage = (popupImages: any) => {
         this.popupImages = popupImages;
+        this.popupImageLoading = [];
+        for (let i = 0; i < popupImages.length; i++) {
+            this.popupImageLoading[i] = true;
+        }
     }
 
     filterAd = (cat: object) => {
@@ -275,7 +280,11 @@ export class CityWallComponent implements OnInit {
         window.open( link, '_blank');
     }
 
-    onLoad = (i: number) => {
-        this.loading[i] = false;
+    onLoad = (i: number, type: string) => {
+        if (type === 'main') {
+            this.loading[i] = false;
+        } else {
+            this.popupImageLoading[i] = false;
+        }
     }
 }
