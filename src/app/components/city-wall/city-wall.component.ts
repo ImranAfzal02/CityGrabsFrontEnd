@@ -40,6 +40,7 @@ export class CityWallComponent implements OnInit {
     footerLinks: any;
     shoppings: any;
     shopping: any;
+    advertisement: any;
 
     showLoader: boolean;
     showReloadMsg: boolean;
@@ -80,6 +81,7 @@ export class CityWallComponent implements OnInit {
 
         this.city = {};
         this.category = {};
+        this.advertisement = {};
 
         this.showLoader = true;
         this.showReloadMsg = false;
@@ -124,11 +126,14 @@ export class CityWallComponent implements OnInit {
         }
 
     }
-    setPopUpImage = (popupImages: any) => {
-        this.popupImages = popupImages;
-        this.popupImageLoading = [];
-        for (let i = 0; i < popupImages.length; i++) {
-            this.popupImageLoading[i] = true;
+    setPopUpImage = (advertisement: any) => {
+        if (this.advertisement.id !== advertisement.id) {
+            this.popupImages = advertisement.popupImages;
+            this.advertisement = advertisement;
+            this.popupImageLoading = [];
+            for (let i = 0; i < this.popupImages.length; i++) {
+                this.popupImageLoading[i] = true;
+            }
         }
     }
 

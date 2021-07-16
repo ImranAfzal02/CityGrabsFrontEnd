@@ -34,6 +34,22 @@
 ::ng-deep .modal-open .modal {
     background: white !important;
 }
+
+.popup-main-title {
+    background: black;
+    padding: 10px;
+    color: white;
+    margin: 0px -8px -8px -8px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+::ng-deep .btn-close {
+    background-color: grey;
+    width: 2em;
+    height: 2em;
+    border-radius: 50px;
+}
 /*@media (max-width: 576px) {*/
 /*    .jobs-links a:first-child {*/
 /*        font-size: 15px;*/

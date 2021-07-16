@@ -579,10 +579,10 @@ body {
 
 .advertisement-title {
     display: inline-block;
-    width: 180px;
+    /*width: 180px;*/
     font-size: 14px !important;
-    white-space: nowrap;
-    overflow: hidden !important;
+    /*white-space: nowrap;*/
+    /*overflow: hidden !important;*/
     text-overflow: ellipsis;
 }
 
