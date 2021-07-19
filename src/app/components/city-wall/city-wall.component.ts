@@ -5,6 +5,7 @@ import {environment} from '../../../environments/environment';
 import {LocalStorageService} from '../../services/local-storage.service';
 import {Router} from '@angular/router';
 import {NotificationService} from '../../services/notification.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-city-hall',
@@ -28,6 +29,7 @@ export class CityWallComponent implements OnInit {
     searchableCategory: string;
     nextPageUrl: string;
     selectedName: string;
+    youtubeUrl: any;
 
     number: any;
     categories: any;
@@ -57,7 +59,8 @@ export class CityWallComponent implements OnInit {
         private service: GeneralService,
         private storage: LocalStorageService,
         private router: Router,
-        private notification: NotificationService
+        private notification: NotificationService,
+        private sanitizer: DomSanitizer
     ) {
 
         this.imageBaseUrl = environment.imageBaseUrl;
@@ -67,6 +70,7 @@ export class CityWallComponent implements OnInit {
         this.searchableCategory = '';
         this.nextPageUrl = '';
         this.selectedName = '';
+        this.youtubeUrl = '';
 
         this.categories = [];
         this.prominentCategories = [];
@@ -126,6 +130,7 @@ export class CityWallComponent implements OnInit {
         }
 
     }
+
     setPopUpImage = (advertisement: any) => {
         if (this.advertisement.id !== advertisement.id) {
             this.popupImages = advertisement.popupImages;
@@ -291,5 +296,13 @@ export class CityWallComponent implements OnInit {
         } else {
             this.popupImageLoading[i] = false;
         }
+    }
+
+    setYoutubeUrl = (advertisement: any) => {
+        this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(advertisement.youtube_link);
+    }
+
+    stopVideo = () => {
+        this.youtubeUrl = '';
     }
 }

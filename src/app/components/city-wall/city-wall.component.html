@@ -55,14 +55,16 @@
     <div class="container">
         <div class="deals-img">
             <p [innerText]="selectedName" class="color-red font-weight-bold"></p>
-
             <div *ngFor="let advertisement of advertisements; let i = index">
                 <div class="banks-meta d-flex mt-3">
                     <div class="banks-img">
                         <div *ngIf="loading[i]" style="width: 120px; height: 120px; text-align: center;">
                             <i class="fa fa-2x fa-spinner fa-spin"></i>
                         </div>
-                        <img class="img-fluid" [hidden]="loading[i]" (load)="onLoad(i, 'main')" [src]="imageBaseUrl + '/' + advertisement.main_image" [alt]="advertisement.title">
+                        <div *ngIf="advertisement.youtube_link" class="youtube-link" data-bs-toggle="modal" data-bs-target="#youtubeModal" (click)="setYoutubeUrl(advertisement)">
+                            <img class="img-fluid" [hidden]="loading[i]" (load)="onLoad(i, 'main')" [src]="imageBaseUrl + '/' + advertisement.main_image" [alt]="advertisement.title">
+                        </div>
+                        <img *ngIf="!advertisement.youtube_link" class="img-fluid" [hidden]="loading[i]" (load)="onLoad(i, 'main')" [src]="imageBaseUrl + '/' + advertisement.main_image" [alt]="advertisement.title">
                     </div>
                     <div class="banks-content">
                         <h2 class="advertisement-title">{{ advertisement.title }}</h2>
@@ -207,3 +209,17 @@
     </div>
 </div>
 <!-- END MODAL 1 -->
+
+<!-- Youtube Video Popup -->
+<div class="modal fade" id="youtubeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="stopVideo()"></button>
+            </div>
+            <div class="modal-body" *ngIf="youtubeUrl != ''">
+                <iframe id="youtubeIframe" class="embed-responsive-item" width="100%" [src]="youtubeUrl" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>

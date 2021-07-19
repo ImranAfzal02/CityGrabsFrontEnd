@@ -50,6 +50,14 @@
     height: 2em;
     border-radius: 50px;
 }
+
+.youtube-link {
+    cursor: pointer;
+}
+
+#youtubeIframe {
+    margin-top:50px;
+}
 /*@media (max-width: 576px) {*/
 /*    .jobs-links a:first-child {*/
 /*        font-size: 15px;*/
