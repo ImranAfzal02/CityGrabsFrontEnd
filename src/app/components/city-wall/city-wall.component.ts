@@ -299,7 +299,7 @@ export class CityWallComponent implements OnInit {
     }
 
     setYoutubeUrl = (advertisement: any) => {
-        this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(advertisement.youtube_link);
+        this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(advertisement.youtube_link+'?autoplay=1&amp;modestbranding=1&amp;showinfo=0');
     }
 
     stopVideo = () => {
