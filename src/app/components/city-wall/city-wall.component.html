@@ -114,33 +114,33 @@
 </div>
 <!-- DEALS IMAGES -->
 
-<!-- FOOTER -->
-<footer class="footer text-center">
-    <div class="container">
-        <div class="footer-box">
-<!--            <div class="footer-btn pt-4">-->
-<!--                <a href="javascript:;" class="city-name" [title]="city.name" [innerHTML]="city.name"></a>-->
+<!--&lt;!&ndash; FOOTER &ndash;&gt;-->
+<!--<footer class="footer text-center">-->
+<!--    <div class="container">-->
+<!--        <div class="footer-box">-->
+<!--&lt;!&ndash;            <div class="footer-btn pt-4">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a href="javascript:;" class="city-name" [title]="city.name" [innerHTML]="city.name"></a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--            <div class="foot-links mt-1">-->
+<!--                <a href="javascript:;" *ngFor="let link of footerLinks" [title]="link.title" [innerHTML]="link.title" (click)="getShopping($event, link)"></a>-->
 <!--            </div>-->
-            <div class="foot-links mt-1">
-                <a href="javascript:;" *ngFor="let link of footerLinks" [title]="link.title" [innerHTML]="link.title" (click)="getShopping($event, link)"></a>
-            </div>
-            <a href="javascript:;" class="float-right footer-links-close" (click)="hideShoppings()" *ngIf="showShopping"><i class="fa fa-times"></i></a>
-            <div class="logos-slider" *ngIf="showShopping">
-                <owl-carousel-o [options]="customOptions">
-                    <ng-container *ngFor="let shop of shoppings">
-                        <ng-template [width]="207.667" carouselSlide [id]="shop.id">
-                            <div class="item">
-                                <a href="javascript:;" (click)="filterAdvertisementByShopping(shop)">
-                                    <img [src]="imageBaseUrl + '/' + shop.image_url" [alt]="shop.title">
-                                </a>
-                            </div>
-                        </ng-template>
-                    </ng-container>
-                </owl-carousel-o>
-            </div>
-        </div>
-    </div>
-</footer>
+<!--            <a href="javascript:;" class="float-right footer-links-close" (click)="hideShoppings()" *ngIf="showShopping"><i class="fa fa-times"></i></a>-->
+<!--            <div class="logos-slider" *ngIf="showShopping">-->
+<!--                <owl-carousel-o [options]="customOptions">-->
+<!--                    <ng-container *ngFor="let shop of shoppings">-->
+<!--                        <ng-template [width]="207.667" carouselSlide [id]="shop.id">-->
+<!--                            <div class="item">-->
+<!--                                <a href="javascript:;" (click)="filterAdvertisementByShopping(shop)">-->
+<!--                                    <img [src]="imageBaseUrl + '/' + shop.image_url" [alt]="shop.title">-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </ng-template>-->
+<!--                    </ng-container>-->
+<!--                </owl-carousel-o>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</footer>-->
 
 <!-- MODAL 1 -->
 <div class="modal fade" id="popupImageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
