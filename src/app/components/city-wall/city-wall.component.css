@@ -1,3 +1,32 @@
+.footer-ad-img {
+    width: 100%;
+}
+.no-footer-img {
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 50px;
+    border-radius: 5px;
+}
+
+.wall-ad-img {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 50px;
+}
+.no-wall-ad-img {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    background: red;
+}
+
 .deals-img {
     padding-bottom: 90px !important;
 }
@@ -29,7 +58,7 @@
 }
 
 .footer-box{
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 ::ng-deep .modal-open .modal {
     background: white !important;
@@ -53,6 +82,10 @@
 
 .youtube-link {
     cursor: pointer;
+}
+
+#youtubeModal {
+    background: black !important;
 }
 
 #youtubeIframe {

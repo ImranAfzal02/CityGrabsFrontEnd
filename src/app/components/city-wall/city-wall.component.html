@@ -7,6 +7,7 @@
 <section class="weekly-deals mt-3 position-relative">
     <div class="container">
         <div class="wrapper">
+            <p>{{ city.name }}</p>
             <div class="search-input">
                 <a href="" target="_blank" hidden></a>
 
@@ -54,6 +55,14 @@
 <div class="deals mt-2">
     <div class="container">
         <div class="deals-img">
+            <img [src]="imageBaseUrl + '/' + footerAdImg" *ngIf="footerAdImg" class="footer-ad-img">
+            <img [src]="imageBaseUrl + '/' + wallAdImg" *ngIf="wallAdImg" class="wall-ad-img">
+            <div class="no-footer-img" *ngIf="!footerAdImg">
+                Category Wall Banner
+            </div>
+            <div class="no-wall-ad-img" *ngIf="!wallAdImg">
+                Fixed Footer Banner Ad
+            </div>
             <p [innerText]="selectedName" class="color-red font-weight-bold"></p>
             <div *ngFor="let advertisement of advertisements; let i = index">
                 <div class="banks-meta d-flex mt-3">
@@ -109,13 +118,10 @@
 <footer class="footer text-center">
     <div class="container">
         <div class="footer-box">
-            <div class="footer-btn pt-4">
-<!--                <div *ngIf="showLoadMore && !showLoader">-->
-<!--                    <a href="javascript:;" (click)="loadMore()" class="load-more">Load More Ads...</a>-->
-<!--                </div>-->
-                <a href="javascript:;" class="city-name" [title]="city.name" [innerHTML]="city.name"></a>
-            </div>
-            <div class="foot-links mt-5">
+<!--            <div class="footer-btn pt-4">-->
+<!--                <a href="javascript:;" class="city-name" [title]="city.name" [innerHTML]="city.name"></a>-->
+<!--            </div>-->
+            <div class="foot-links mt-1">
                 <a href="javascript:;" *ngFor="let link of footerLinks" [title]="link.title" [innerHTML]="link.title" (click)="getShopping($event, link)"></a>
             </div>
             <a href="javascript:;" class="float-right footer-links-close" (click)="hideShoppings()" *ngIf="showShopping"><i class="fa fa-times"></i></a>

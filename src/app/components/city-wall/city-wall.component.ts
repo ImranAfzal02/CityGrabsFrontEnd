@@ -24,13 +24,15 @@ export class CityWallComponent implements OnInit {
 
     };
     imageBaseUrl: string;
+    footerAdImg: string;
+    wallAdImg: string;
     keyword: string;
     popUpImage: string;
     searchableCategory: string;
     nextPageUrl: string;
     selectedName: string;
-    youtubeUrl: any;
 
+    youtubeUrl: any;
     number: any;
     categories: any;
     category: any;
@@ -71,6 +73,8 @@ export class CityWallComponent implements OnInit {
         this.nextPageUrl = '';
         this.selectedName = '';
         this.youtubeUrl = '';
+        this.footerAdImg = '';
+        this.wallAdImg = '';
 
         this.categories = [];
         this.prominentCategories = [];
@@ -146,6 +150,11 @@ export class CityWallComponent implements OnInit {
         this.resetSearchable();
         this.advertisements = [];
         this.filterAdByCategory(cat);
+
+        // @ts-ignore
+        this.footerAdImg = cat.footer_ad_image;
+        // @ts-ignore
+        this.wallAdImg = cat.wall_ad;
     }
 
     filterAdByCategory = (cat: object) => {
