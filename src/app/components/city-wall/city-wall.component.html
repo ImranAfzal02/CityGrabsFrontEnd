@@ -4,7 +4,7 @@
 <small class="color-red" style="margin-left: 10px;" *ngIf="showReloadMsg">
     Something went wrong. Please <a href="#" (click)="reload($event)">reload</a> this page.
 </small>
-<section class="weekly-deals mt-3 position-relative">
+<section class="weekly-deals mt-1 position-relative">
     <div class="container">
         <div class="wrapper">
             <p>{{ city.name }}</p>
@@ -64,6 +64,7 @@
                 Fixed Footer Banner Ad
             </div>
             <p [innerText]="selectedName" class="color-red font-weight-bold"></p>
+            <hr style="width: 75%; margin: 5px auto;">
             <div *ngFor="let advertisement of advertisements; let i = index">
                 <div class="banks-meta d-flex mt-3">
                     <div class="banks-img">
@@ -97,6 +98,10 @@
                             <div class="svg-icon" [hidden]="!advertisement.gps_link" data-bs-toggle="modal"  (click)="openLink(advertisement.gps_link)">
 
                                 <img src="assets/images/pin.svg" alt="blabla_is_working" style="width: 50%;">
+                            </div>
+
+                            <div class="svg-icon" [hidden]="advertisement.galleryImages.length == 0"  data-bs-toggle="modal" data-bs-target="#galleryImagesModal" (click)="openGalleryImages(advertisement.galleryImages)">
+                                <i class="fa fa-images"></i>
                             </div>
                         </div>
                     </div>
@@ -225,6 +230,23 @@
             </div>
             <div class="modal-body text-center" *ngIf="youtubeUrl != ''" >
                 <iframe id="youtubeIframe" class="embed-responsive-item"  [src]="youtubeUrl" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Youtube Video Popup -->
+<div class="modal fade" id="galleryImagesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center mt-5">
+                <div *ngFor="let img of galleryImages" class="mb-2">
+                    <img [src]="imageBaseUrl + '/' +img.url" style="width: 95%;">
+                </div>
             </div>
         </div>
     </div>

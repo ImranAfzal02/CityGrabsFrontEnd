@@ -45,6 +45,7 @@ export class CityWallComponent implements OnInit {
     shoppings: any;
     shopping: any;
     advertisement: any;
+    galleryImages: any;
 
     showLoader: boolean;
     showReloadMsg: boolean;
@@ -86,6 +87,7 @@ export class CityWallComponent implements OnInit {
         this.shopping = [];
         this.loading = [];
         this.popupImageLoading = [];
+        this.galleryImages = [];
 
         this.city = {};
         this.category = {};
@@ -108,6 +110,12 @@ export class CityWallComponent implements OnInit {
             this.service.getCityHallData(this.city.id).subscribe(data => {
                 // @ts-ignore
                 this.categories = data.data.categories;
+
+                // @ts-ignore
+                this.footerAdImg = this.categories[0].footer_ad_image;
+                // @ts-ignore
+                this.wallAdImg = this.categories[0].wall_ad;
+
                 // @ts-ignore
                 this.prominentCategories = data.data.prominent_categories;
                 // @ts-ignore
@@ -313,5 +321,9 @@ export class CityWallComponent implements OnInit {
 
     stopVideo = () => {
         this.youtubeUrl = '';
+    }
+
+    openGalleryImages = (galleryImages: any) => {
+        this.galleryImages = galleryImages;
     }
 }
