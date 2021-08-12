@@ -19,6 +19,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgbDatepicker, NgbDatepickerModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RequestFormComponent } from './components/request-form/request-form.component';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
+import { TileComponent } from './components/tile/tile.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { PopupImageModalComponent } from './components/popup-image-modal/popup-image-modal.component';
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -34,6 +37,9 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         HeaderComponent,
         PaymentComponent,
         RequestFormComponent,
+        TileComponent,
+        ModalComponent,
+        PopupImageModalComponent,
     ],
     imports: [
         BrowserModule,

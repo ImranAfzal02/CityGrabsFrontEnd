@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+</div>
+<div class="modal-body">
+    <div *ngFor="let img of this.images; let first = first; let i = index">
+        <div *ngIf="img.main_title" class="popup-main-title">
+            {{ img.main_title }}
+        </div>
+        <div class="banks-meta d-flex mt-3">
+            <div class="banks-img">
+                <div *ngIf="loading[i]" style="width: 120px; height: 120px; text-align: center;">
+                    <i class="fa fa-2x fa-spinner fa-spin"></i>
+                </div>
+                <img class="img-fluid" [hidden]="loading[i]" (load)="onLoad(i, 'popup')" [src]="imageBaseUrl + '/' + img.image_url" alt=" ">
+            </div>
+            <div class="banks-content">
+                <h2 class="advertisement-title">{{ img.title }}</h2>
+                <p class="ml-2 lh-1" [hidden]="!img.address" style="font-size: 0.8rem;">{{ img.address }}</p>
+                <div class="contact-icons d-flex">
+                    <div class="svg-icon" [hidden]="!img.phone" (click)="initiateCall(img)">
+                        <svg class="icon icon-telephone" width="14" height="14">
+                            <use href="assets/images/sprite.svg#telephone"></use>
+                        </svg>
+                    </div>
+
+                    <div class="svg-icon" [hidden]="!img.website" data-bs-toggle="modal"  (click)="openLink(img.website)">
+                        <img src="assets/images/internet_new.svg" alt="blabla_is_working" >
+                    </div>
+
+                    <div class="svg-icon" [hidden]="!img.gps_link" data-bs-toggle="modal"  (click)="openLink(img.gps_link)">
+
+                        <img src="assets/images/pin.svg" alt="blabla_is_working" style="width: 50%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-para mt-3">
+            <p class="main-description" [innerText]="img.description"></p>
+        </div>
+        <hr class="dropdown-divider">
+    </div>
+</div>

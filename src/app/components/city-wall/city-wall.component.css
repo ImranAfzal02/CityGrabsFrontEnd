@@ -76,33 +76,15 @@
 
 ::ng-deep .btn-close {
     background-color: grey;
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
     border-radius: 50px;
+    margin: -0.8rem -.5rem -.5rem auto !important;
 }
 
 .youtube-link {
     cursor: pointer;
 }
-
-#youtubeModal {
-    background: black !important;
-}
-
-#youtubeIframe {
-    margin-top:50px;
-}
-/*@media (max-width: 576px) {*/
-/*    .jobs-links a:first-child {*/
-/*        font-size: 15px;*/
-/*        font-weight: 100;*/
-/*    }*/
-/*}*/
-
-
-/*.jobs-links a {*/
-/*    font-weight: 100;*/
-/*}*/
 
 @font-face {
     font-family: 'Franklin';
@@ -112,13 +94,3 @@
 .category-links a {
     font-family: Franklin !important;
 }
-
-/*.jobs-links a:nth-child(2){*/
-/*    color:#000;*/
-/*}*/
-
-
-/*.jobs-links a{*/
-/*color:#000;*/
-/*}*/
-

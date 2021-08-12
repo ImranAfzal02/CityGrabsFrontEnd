@@ -1,0 +1,72 @@
+<div class="banks-meta d-flex mt-3">
+    <div class="banks-img">
+        <div *ngIf="loading[dataIndex]" style="width: 120px; height: 120px; text-align: center;">
+            <i class="fa fa-2x fa-spinner fa-spin"></i>
+        </div>
+        <div *ngIf="data.youtube_link" class="youtube-link" data-bs-toggle="modal" data-bs-target="#youtubeModal" (click)="setYoutubeUrl(data)">
+            <img class="img-fluid" [hidden]="loading[dataIndex]" (load)="onLoad(dataIndex, 'main')" [src]="imageBaseUrl + '/' + data.main_image" [alt]="data.title">
+        </div>
+        <img *ngIf="!data.youtube_link" class="img-fluid" [hidden]="loading[dataIndex]" (load)="onLoad(dataIndex, 'main')" [src]="imageBaseUrl + '/' + data.main_image" [alt]="data.title">
+    </div>
+    <div class="banks-content">
+        <h2 class="advertisement-title">{{ data.title }}</h2>
+        <p class="ml-2 lh-1" [hidden]="!data.address" style="font-size: 0.8rem;">{{ data.address }}</p>
+        <div class="contact-icons d-flex">
+            <div class="svg-icon" [hidden]="!data.phone" (click)="initiateCall(data)">
+                <svg class="icon icon-telephone" width="14" height="14">
+                    <use href="assets/images/sprite.svg#telephone"></use>
+                </svg>
+            </div>
+            <div class="svg-icon" [hidden]="data.popupImages.length === 0" data-bs-toggle="modal" data-bs-target="#popupImageModal" (click)="setPopUpImage(data)">
+                <svg class="icon icon-speaker" width="14" height="14">
+                    <use href="assets/images/sprite.svg#speaker"></use>
+                </svg>
+            </div>
+
+            <div class="svg-icon" [hidden]="!data.website" data-bs-toggle="modal"  (click)="openLink(data.website)">
+                <img src="assets/images/internet_new.svg" alt="blabla_is_working" >
+            </div>
+
+            <div class="svg-icon" [hidden]="!data.gps_link" data-bs-toggle="modal"  (click)="openLink(data.gps_link)">
+
+                <img src="assets/images/pin.svg" alt="blabla_is_working" style="width: 50%;">
+            </div>
+
+            <div class="svg-icon" [hidden]="data.galleryImages.length == 0"  data-bs-toggle="modal" data-bs-target="#galleryImagesModal" (click)="openGalleryImages(data.galleryImages)">
+                <i class="fa fa-images"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-para mt-3">
+    <p class="main-description" [innerText]="data.description"></p>
+</div>
+<hr class="dropdown-divider">
+
+<div class="modal fade" id="youtubeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="stopVideo()"></button>
+            </div>
+            <div class="modal-body text-center" *ngIf="youtubeUrl != ''" >
+                <iframe id="youtubeIframe" class="embed-responsive-item"  [src]="youtubeUrl" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="galleryImagesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center mt-5">
+                <div *ngFor="let img of galleryImages" class="mb-2">
+                    <img [src]="imageBaseUrl + '/' +img.url" style="width: 95%;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -37,7 +37,7 @@ export class CityWallComponent implements OnInit {
     categories: any;
     category: any;
     advertisements: any;
-    popupImages: any;
+    // popupImages: any;
     city: any;
     prominentCategories: any;
     searchableCategories: any;
@@ -45,7 +45,7 @@ export class CityWallComponent implements OnInit {
     shoppings: any;
     shopping: any;
     advertisement: any;
-    galleryImages: any;
+    // galleryImages: any;
 
     showLoader: boolean;
     showReloadMsg: boolean;
@@ -56,14 +56,13 @@ export class CityWallComponent implements OnInit {
     lastPage: number;
 
     loading: boolean[];
-    popupImageLoading: boolean[];
+    // popupImageLoading: boolean[];
 
     constructor(
         private service: GeneralService,
         private storage: LocalStorageService,
         private router: Router,
-        private notification: NotificationService,
-        private sanitizer: DomSanitizer
+        private notification: NotificationService
     ) {
 
         this.imageBaseUrl = environment.imageBaseUrl;
@@ -81,13 +80,13 @@ export class CityWallComponent implements OnInit {
         this.prominentCategories = [];
         this.searchableCategories = [];
         this.advertisements = [];
-        this.popupImages = [];
+        // this.popupImages = [];
         this.footerLinks = [];
         this.shoppings = [];
         this.shopping = [];
         this.loading = [];
-        this.popupImageLoading = [];
-        this.galleryImages = [];
+        // this.popupImageLoading = [];
+        // this.galleryImages = [];
 
         this.city = {};
         this.category = {};
@@ -143,16 +142,16 @@ export class CityWallComponent implements OnInit {
 
     }
 
-    setPopUpImage = (advertisement: any) => {
-        if (this.advertisement.id !== advertisement.id) {
-            this.popupImages = advertisement.popupImages;
-            this.advertisement = advertisement;
-            this.popupImageLoading = [];
-            for (let i = 0; i < this.popupImages.length; i++) {
-                this.popupImageLoading[i] = true;
-            }
-        }
-    }
+    // setPopUpImage = (advertisement: any) => {
+    //     if (this.advertisement.id !== advertisement.id) {
+    //         this.popupImages = advertisement.popupImages;
+    //         this.advertisement = advertisement;
+    //         this.popupImageLoading = [];
+    //         for (let i = 0; i < this.popupImages.length; i++) {
+    //             this.popupImageLoading[i] = true;
+    //         }
+    //     }
+    // }
 
     filterAd = (cat: object) => {
         this.resetSearchable();
@@ -223,11 +222,11 @@ export class CityWallComponent implements OnInit {
         // }
     }
 
-    initiateCall = (advertisement: any) => {
-        console.log(advertisement.phone);
-        // @ts-ignore
-        window.location = 'tel:' + advertisement.phone;
-    }
+    // initiateCall = (advertisement: any) => {
+    //     console.log(advertisement.phone);
+    //     // @ts-ignore
+    //     window.location = 'tel:' + advertisement.phone;
+    // }
 
     reload = (e: any) => {
         e.preventDefault();
@@ -297,33 +296,33 @@ export class CityWallComponent implements OnInit {
         });
     }
 
-    // @ts-ignore
-    openLink = (link) => {
+    // // @ts-ignore
+    // openLink = (link) => {
+    //
+    //     if (link && link.indexOf('http') === -1) {
+    //         link = `//${link}`;
+    //     }
+    //
+    //     window.open( link, '_blank');
+    // }
 
-        if (link && link.indexOf('http') === -1) {
-            link = `//${link}`;
-        }
+    // onLoad = (i: number, type: string) => {
+    //     if (type === 'main') {
+    //         this.loading[i] = false;
+    //     } else {
+    //         this.popupImageLoading[i] = false;
+    //     }
+    // }
 
-        window.open( link, '_blank');
-    }
+    // setYoutubeUrl = (advertisement: any) => {
+    //     this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(advertisement.youtube_link+'?autoplay=1&amp;modestbranding=1&amp;showinfo=0');
+    // }
 
-    onLoad = (i: number, type: string) => {
-        if (type === 'main') {
-            this.loading[i] = false;
-        } else {
-            this.popupImageLoading[i] = false;
-        }
-    }
+    // stopVideo = () => {
+    //     this.youtubeUrl = '';
+    // }
 
-    setYoutubeUrl = (advertisement: any) => {
-        this.youtubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(advertisement.youtube_link+'?autoplay=1&amp;modestbranding=1&amp;showinfo=0');
-    }
-
-    stopVideo = () => {
-        this.youtubeUrl = '';
-    }
-
-    openGalleryImages = (galleryImages: any) => {
-        this.galleryImages = galleryImages;
-    }
+    // openGalleryImages = (galleryImages: any) => {
+    //     this.galleryImages = galleryImages;
+    // }
 }
