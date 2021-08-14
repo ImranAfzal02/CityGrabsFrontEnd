@@ -184,6 +184,10 @@
 
                                     <img src="assets/images/pin.svg" alt="blabla_is_working" style="width: 50%;">
                                 </div>
+
+                                <div class="svg-icon" [hidden]="img.galleryImages.length == 0"  data-bs-toggle="modal" data-bs-target="#galleryImagesModal" (click)="openGalleryImages(img.galleryImages)">
+                                    <i class="fa fa-images"></i>
+                                </div>
                             </div>
                         </div>
                     </div>

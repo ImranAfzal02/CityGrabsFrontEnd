@@ -61,7 +61,7 @@
 .footer-box{
     padding-bottom: 5px;
 }
-::ng-deep .modal-open .modal {
+::ng-deep .modal {
     background: white !important;
 }
 

@@ -473,7 +473,7 @@ body {
 }
 
 /* MODAL STYLE */
-.modal-open .modal {
+.modal {
     overflow-x: hidden;
     overflow-y: auto;
     background: rgba(0,0,0, 0.9);
